@@ -1,0 +1,2594 @@
+/*
+Theme Name: Hello Elementor Child
+Theme URI: https://horizonte-camper.local
+Description: Tema hijo de Hello Elementor para el proyecto Horizonte Camper.
+Author: Monica Riveiro
+Author URI: https://www.monicariveiro.es
+Template: hello-elementor
+Version: 1.0.0
+Text Domain: hello-elementor-child
+*/
+
+
+/* =====================================
+   IMPORTACION DE LA FUENTE POPPINS
+===================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+/* =====================================
+   VARIABLES GLOBALES
+===================================== */
+
+:root {
+
+    /* ===== COLORES ===== */
+
+    --color-primario: #0F4C5C;
+    --color-secundario: #D96B43;
+    --color-crema: #F8F5EF;
+    --color-blanco: #FFFFFF;
+    --color-negro: #222222;
+
+
+    /* ===== TIPOGRAFIA ===== */
+
+    --font-primary: 'Poppins', sans-serif;
+
+
+    /* ===== TAMAÑOS ===== */
+
+    --font-menu: 15px;
+    --font-body: 18px;
+    --font-h1: 64px;
+    --font-h2: 46px;
+    --font-h3: 30px;
+
+
+    /* ===== ESPACIADOS ===== */
+
+    --space-xs: 8px;
+    --space-s: 16px;
+    --space-m: 24px;
+    --space-l: 40px;
+    --space-xl: 64px;
+
+
+    /* ===== BORDES ===== */
+
+    --radius-s: 8px;
+    --radius-m: 16px;
+    --radius-l: 30px;
+
+
+    /* ===== SOMBRAS ===== */
+
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, .08);
+
+
+    /* ===== TRANSICIONES ===== */
+
+    --transition: .3s ease;
+
+
+    /* ===== IMÁGENES ===== */
+
+    --imagen-brujula:
+        url("/wp-content/uploads/2026/07/brujula-cursor.webp");
+}
+
+
+/* =====================================
+   MENÚ PRINCIPAL
+===================================== */
+
+.site-navigation a,
+.main-navigation a,
+.menu a {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: var(--font-primary);
+    font-size: var(--font-menu);
+    font-weight: 400;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+
+    color: var(--color-secundario);
+
+    padding: 12px 10px 17px;
+
+    transition:
+        color var(--transition),
+        transform var(--transition);
+}
+
+
+/* =====================================
+   LÍNEA DECORATIVA
+===================================== */
+
+.site-navigation a::after,
+.main-navigation a::after,
+.menu a::after {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+
+    width: 0;
+    height: 2px;
+
+    background-color: var(--color-primario);
+
+    border-radius: 10px;
+
+    transform: translateX(-50%);
+
+    transition:
+        width var(--transition),
+        background-color var(--transition);
+}
+
+
+/* =====================================
+   EFECTO HOVER
+===================================== */
+
+.site-navigation a:hover,
+.main-navigation a:hover,
+.menu a:hover {
+    color: var(--color-primario);
+
+    transform: translateY(-2px);
+}
+
+
+/* La línea crece desde el centro */
+
+.site-navigation a:hover::after,
+.main-navigation a:hover::after,
+.menu a:hover::after {
+    width: calc(100% - 20px);
+}
+
+
+/* =====================================
+   PÁGINA ACTUAL
+===================================== */
+
+.current-menu-item > a,
+.current_page_item > a,
+.site-navigation a[aria-current="page"],
+.main-navigation a[aria-current="page"],
+.menu a[aria-current="page"] {
+    color: var(--color-primario);
+}
+
+
+/* Línea visible en la página actual */
+
+.current-menu-item > a::after,
+.current_page_item > a::after,
+.site-navigation a[aria-current="page"]::after,
+.main-navigation a[aria-current="page"]::after,
+.menu a[aria-current="page"]::after {
+    width: calc(100% - 20px);
+}
+
+
+/* =====================================
+   BRÚJULA SOBRE LA LÍNEA ACTIVA DEL MENÚ
+===================================== */
+
+.current-menu-item > a::before,
+.current_page_item > a::before,
+.site-navigation a[aria-current="page"]::before,
+.main-navigation a[aria-current="page"]::before,
+.menu a[aria-current="page"]::before {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+
+    width: 18px;
+    height: 18px;
+
+    background-color: var(--color-crema);
+    background-image: var(--imagen-brujula);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    border-radius: 50%;
+
+    transform: translateX(-50%) rotate(0deg);
+
+    z-index: 2;
+
+    transition:
+        transform 0.8s ease,
+        filter var(--transition);
+}
+
+
+/* =====================================
+   GIRO DE LA BRÚJULA ACTIVA DEL MENÚ
+===================================== */
+
+.current-menu-item > a:hover::before,
+.current_page_item > a:hover::before,
+.site-navigation a[aria-current="page"]:hover::before,
+.main-navigation a[aria-current="page"]:hover::before,
+.menu a[aria-current="page"]:hover::before {
+    transform: translateX(-50%) rotate(180deg);
+}
+
+
+/* =====================================================
+   BOTÓN TRANSPARENTE CON BRÚJULA RODANDO
+===================================================== */
+
+.boton-brujula .elementor-button {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding-left: 72px;
+    padding-right: 28px;
+
+    background: transparent !important;
+    
+		border: none;
+
+    color: var(--color-secundario) !important;
+    box-shadow: none;
+
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.boton-brujula .elementor-button-text {
+    color: var(--color-secundario) !important;
+}
+
+
+/* =====================================
+   BRÚJULA SITUADA A LA IZQUIERDA
+===================================== */
+
+.boton-brujula .elementor-button::before {
+    content: "";
+
+    position: absolute;
+    left: 24px;
+    top: 50%;
+
+    width: 22px;
+    height: 22px;
+
+    background-image: var(--imagen-brujula);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    transform:
+        translateY(-50%)
+        translateX(0)
+        rotate(0deg);
+
+    transition: transform 0.7s ease;
+}
+
+
+/* =====================================
+   HOVER DEL BOTÓN
+===================================== */
+
+.boton-brujula .elementor-button:hover {
+    background: transparent !important;
+
+    color: var(--color-secundario);
+
+    border: none;
+    box-shadow: none;
+}
+
+
+/* La brújula rueda hacia la derecha */
+
+.boton-brujula .elementor-button:hover::before {
+    transform:
+        translateY(-50%)
+        translateX(26px)
+        rotate(360deg);
+}
+/* =====================================================
+   HERO - APARICIÓN ESCALONADA
+===================================================== */
+
+#hero-subtitulo,
+#hero-titulo,
+#hero-texto{
+
+    opacity:0;
+    transform:translateY(18px);
+
+}
+
+/* Subtítulo */
+
+#hero-subtitulo{
+
+    animation:
+        heroFade 1.2s cubic-bezier(.22,1,.36,1)
+        .2s
+        forwards;
+
+}
+
+/* Título */
+
+#hero-titulo{
+
+    animation:
+        heroFade 1.7s cubic-bezier(.22,1,.36,1)
+        .45s
+        forwards;
+
+}
+
+/* Texto */
+
+#hero-texto{
+
+    animation:
+        heroFade 1.9s cubic-bezier(.22,1,.36,1)
+        .75s
+        forwards;
+
+}
+
+
+/* Animación */
+
+@keyframes heroFade{
+
+    from{
+
+        opacity:0;
+        transform:translateY(18px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+/* Accesibilidad */
+
+@media (prefers-reduced-motion: reduce){
+
+    #hero-subtitulo,
+    #hero-titulo,
+    #hero-texto{
+
+        opacity:1;
+        transform:none;
+        animation:none;
+
+    }
+
+}
+
+/* ==========================================================
+   CABECERA INTELIGENTE
+   Se oculta al bajar y aparece al subir
+   ========================================================== */
+
+header.site-header,
+.site-header,
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+
+    /* Altura interior */
+    padding: 30px 0;
+
+    /* Fondo semitransparente */
+    background: rgba(248, 245, 239, 0.60);
+
+    /* Desenfoque del contenido de fondo */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    /* Animación al ocultarse y aparecer */
+    transition: transform 0.35s ease;
+    will-change: transform;
+}
+
+/* Cabecera escondida */
+header.site-header.cabecera-oculta,
+.site-header.cabecera-oculta,
+#site-header.cabecera-oculta {
+    transform: translateY(-110%);
+		visibility: hidden;
+}
+
+/* ==========================================================
+   MICROTRAMA SOBRE EL VÍDEO DEL HERO
+   Horizonte Camper
+   ========================================================== */
+
+/* El contenedor necesita una posición de referencia */
+.hero-trama {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Capa de microtrama situada sobre el vídeo */
+.hero-trama::after {
+    content: "";
+
+    /* Ocupa todo el contenedor */
+    position: absolute;
+    inset: 0;
+
+    /* Patrón de pequeños puntos */
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.28) 0.7px,
+            transparent 0.8px
+        );
+
+    /* Distancia entre los puntos */
+    background-size: 3.5px 3.5px;
+
+    /* Intensidad general de la trama */
+    opacity: 0.32;
+
+    /* Evita que la trama impida pulsar botones o enlaces */
+    pointer-events: none;
+
+    /* Mantiene la trama sobre el vídeo */
+    z-index: 2;
+}
+
+/* Mantiene los textos y botones por encima de la trama */
+.hero-trama > .e-con-inner,
+.hero-trama > .elementor-widget-wrap,
+.hero-trama > .elementor-element {
+    position: relative;
+    z-index: 3;
+}
+
+/* ==========================================================
+   BOTÓN VOLVER ARRIBA
+========================================================== */
+
+#volver-arriba{
+
+    position:fixed;
+
+    right:35px;
+    bottom:35px;
+
+    width:52px;
+    height:52px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    background:var(--color-primario);
+
+    color: var(--color-blanco);
+
+    text-decoration:none;
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(15px);
+
+    transition:
+    opacity .35s ease,
+    transform .35s ease,
+    background .35s ease,
+    box-shadow .35s ease;
+    
+
+    z-index:9999;
+
+}
+
+#volver-arriba.visible{
+
+    opacity:1;
+    visibility:visible;
+
+    transform:translateY(0);
+
+}
+
+#volver-arriba:hover{
+
+    background:var(--color-secundario);
+
+    transform:translateY(-2px);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+
+}
+
+/* ==========================================================
+   FILOSOFÍA
+   Animación escalonada de textos y líneas
+========================================================== */
+
+#filosofia {
+    /* Duraciones */
+    --filosofia-duracion-texto: 1.1s;
+    --filosofia-duracion-linea: 1s;
+
+    /* Color de las líneas */
+    --filosofia-color-linea: rgba(15, 76, 92, 0.45);
+}
+
+
+/* ==========================================================
+   ESTADO INICIAL DE LOS TEXTOS
+========================================================== */
+
+#filosofia-intro,
+#filosofia-escuchamos,
+#filosofia-disenamos,
+#filosofia-construimos,
+#filosofia-texto {
+    opacity: 0;
+    transform: translateY(20px);
+
+    transition:
+        opacity var(--filosofia-duracion-texto) ease,
+        transform var(--filosofia-duracion-texto)
+        cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* ==========================================================
+   ORDEN DE APARICIÓN
+========================================================== */
+
+#filosofia-intro {
+    position: relative;
+    transition-delay: 0s;
+}
+
+#filosofia-escuchamos {
+    transition-delay: 0.3s;
+}
+
+#filosofia-disenamos {
+    transition-delay: 0.6s;
+}
+
+#filosofia-construimos {
+    transition-delay: 0.9s;
+}
+
+#filosofia-texto {
+    position: relative;
+    transition-delay: 1.3s;
+}
+
+
+/* ==========================================================
+   ESTADO VISIBLE
+========================================================== */
+
+#filosofia.visible #filosofia-intro,
+#filosofia.visible #filosofia-escuchamos,
+#filosofia.visible #filosofia-disenamos,
+#filosofia.visible #filosofia-construimos,
+#filosofia.visible #filosofia-texto {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ==========================================================
+   LÍNEA SUPERIOR
+========================================================== */
+
+#filosofia-intro::after {
+    content: "";
+    position: absolute;
+
+    top: 50%;
+    left: 100%;
+
+    width: 620px;
+    height: 2px;
+
+    margin-left: 35px;
+
+    background: var(--filosofia-color-linea);
+
+    transform: scaleX(0);
+    transform-origin: left center;
+
+    transition:
+        transform var(--filosofia-duracion-linea)
+        cubic-bezier(.22, 1, .36, 1);
+
+    transition-delay: 0.4s;
+}
+
+#filosofia.visible #filosofia-intro::after {
+    transform: scaleX(1);
+}
+
+
+/* ==========================================================
+   LÍNEA INFERIOR
+========================================================== */
+
+#filosofia-texto::after {
+    content: "";
+    position: absolute;
+
+    bottom: 25px;
+    left: 35%;
+
+    width: 761px;
+    height: 2px;
+
+    margin-left: 25px;
+
+    background: var(--filosofia-color-linea);
+
+    transform: scaleX(0);
+    transform-origin: left center;
+
+    transition:
+        transform var(--filosofia-duracion-linea)
+        cubic-bezier(.22, 1, .36, 1);
+
+    transition-delay: 1.6s;
+}
+
+#filosofia.visible #filosofia-texto::after {
+    transform: scaleX(1);
+}
+
+
+/* ==========================================================
+   LÍNEA VERTICAL
+========================================================== */
+
+#filosofia-intro::before {
+    content: "";
+    position: absolute;
+
+    top: 50%;
+    left: calc(100% + 35px + 620px);
+
+    width: 2px;
+    height: 448px;
+
+   background: var(--filosofia-color-linea);
+
+    transform: scaleY(0);
+    transform-origin: top center;
+
+    transition:
+        transform var(--filosofia-duracion-linea)
+        cubic-bezier(.22, 1, .36, 1);
+
+    transition-delay: 2s;
+
+    pointer-events: none;
+}
+
+#filosofia.visible #filosofia-intro::before {
+    transform: scaleY(1);
+}
+
+
+/* ==========================================================
+   MOSTRAR TODO EN EL EDITOR DE ELEMENTOR
+========================================================== */
+
+.elementor-editor-active #filosofia-intro,
+.elementor-editor-active #filosofia-escuchamos,
+.elementor-editor-active #filosofia-disenamos,
+.elementor-editor-active #filosofia-construimos,
+.elementor-editor-active #filosofia-texto {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+.elementor-editor-active #filosofia-intro::before,
+.elementor-editor-active #filosofia-intro::after,
+.elementor-editor-active #filosofia-texto::after {
+    transform: none !important;
+    transition: none !important;
+}
+
+/* ==========================================================
+   WHATSAPP FLOTANTE
+   Icono lateral que se expande al pasar el cursor
+========================================================== */
+
+.whatsapp-flotante {
+    position: fixed;
+    right: 0;
+    top: 42%;
+
+    display: flex;
+    align-items: center;
+
+    width: 58px;
+    height: 58px;
+
+    overflow: hidden;
+
+    padding: 0 17px;
+
+    background: rgba(15, 76, 92, 0.94);
+    color: var(--color-blanco);
+
+    border-radius: 30px 0 0 30px;
+
+    text-decoration: none;
+    white-space: nowrap;
+
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    z-index: 9997;
+
+    transition:
+        width 0.4s cubic-bezier(.22, 1, .36, 1),
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Icono */
+
+.whatsapp-flotante__icono {
+    flex: 0 0 24px;
+
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.whatsapp-flotante__icono svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Texto inicialmente oculto */
+
+.whatsapp-flotante__texto {
+    margin-left: 13px;
+
+    font-family: var(--font-primary);
+    font-size: 15px;
+    font-weight: 500;
+
+    opacity: 0;
+    transform: translateX(10px);
+
+    transition:
+        opacity 0.25s ease 0.08s,
+        transform 0.3s ease 0.08s;
+}
+
+/* Expansión al pasar el cursor */
+
+.whatsapp-flotante:hover,
+.whatsapp-flotante:focus-visible {
+    width: 158px;
+
+    background: var(--color-secundario);
+
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+}
+
+.whatsapp-flotante:hover .whatsapp-flotante__texto,
+.whatsapp-flotante:focus-visible .whatsapp-flotante__texto {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Adaptación para móvil */
+
+@media (max-width: 767px) {
+
+    .whatsapp-flotante {
+        top: auto;
+        right: 18px;
+        bottom: 95px;
+
+        width: 52px;
+        height: 52px;
+
+        padding: 0 14px;
+
+        border-radius: 50%;
+    }
+
+    .whatsapp-flotante:hover,
+    .whatsapp-flotante:focus-visible {
+        width: 52px;
+    }
+
+    .whatsapp-flotante__texto {
+        display: none;
+    }
+}
+
+/* ==========================================================
+   BLOG DINÁMICO HORIZONTE CAMPER
+========================================================== */
+
+/* ==========================================================
+   CONTENEDOR GENERAL
+========================================================== */
+
+.hc-articulos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 52px;
+
+    width: 100%;
+    max-width: 1260px;
+    margin: 0 auto;
+}
+
+
+/* ==========================================================
+   TARJETA
+========================================================== */
+
+.hc-articulo {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    height: 100%;
+
+    transition: transform 0.35s ease;
+}
+
+.hc-articulo:hover {
+    transform: translateY(-8px);
+}
+
+
+/* ==========================================================
+   IMAGEN DESTACADA
+========================================================== */
+
+.hc-articulo-imagen {
+    display: block;
+    overflow: hidden;
+
+    width: 100%;
+    aspect-ratio: 3 / 2;
+
+    border-radius: 55px 0 55px 0;
+}
+
+.hc-articulo-imagen__foto {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform 0.5s cubic-bezier(.22, 1, .36, 1);
+}
+
+.hc-articulo:hover .hc-articulo-imagen__foto {
+    transform: scale(1.04);
+}
+
+
+/* ==========================================================
+   CONTENIDO
+========================================================== */
+
+.hc-articulo-contenido {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 28px 20px 0;
+}
+
+
+/* Categoría */
+
+.hc-articulo-categoria {
+    margin: 0 0 22px;
+
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+    color: var(--color-secundario);
+}
+
+
+/* Título */
+
+.hc-articulo-titulo {
+    margin: 0 0 24px;
+
+    font-size: 29px;
+    line-height: 1.08;
+    font-weight: 600;
+}
+
+.hc-articulo-titulo a {
+    color: var(--color-negro);
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+}
+
+.hc-articulo:hover .hc-articulo-titulo a {
+    color: var(--color-primario);
+}
+
+
+.hc-articulo-extracto {
+    display: -webkit-box;
+    overflow: hidden;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+
+    margin: 0 0 26px;
+
+    font-size: 16px;
+    line-height: 1.45;
+
+    color: var(--color-negro);
+}
+
+
+/* ==========================================================
+   ENLACE LEER ARTICULO
+   Linea desde el centro y brujula animada
+========================================================== */
+
+.hc-articulo-enlace {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    margin-top: auto;
+    padding-bottom: 14px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    color: var(--color-primario);
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+}
+
+/* Linea con espacio central para la brujula */
+
+.hc-articulo-enlace::after {
+    content: "";
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background: linear-gradient(
+        to right,
+        var(--color-secundario) 0,
+        var(--color-secundario) calc(50% - 13px),
+        transparent calc(50% - 13px),
+        transparent calc(50% + 13px),
+        var(--color-secundario) calc(50% + 13px),
+        var(--color-secundario) 100%
+    );
+
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+
+    transition: transform 0.4s cubic-bezier(.22, 1, .36, 1);
+}
+
+/* Brújula situada en el centro de la línea */
+
+.hc-articulo-enlace__brujula {
+    position: absolute;
+
+    left: 50%;
+    bottom: -8px;
+
+    width: 18px;
+    height: 18px;
+
+    background-image: var(--imagen-brujula);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        scale(0)
+        rotate(-90deg);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.45s cubic-bezier(.22, 1, .36, 1);
+
+    pointer-events: none;
+}
+
+.hc-articulo-enlace:hover {
+    color: var(--color-secundario);
+}
+
+.hc-articulo-enlace:hover::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+.hc-articulo-enlace:hover .hc-articulo-enlace__brujula {
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        scale(1)
+        rotate(0deg);
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 1024px) {
+
+    .hc-articulos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 38px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .hc-articulos {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .hc-articulo-contenido {
+        padding-inline: 0;
+    }
+
+    .hc-articulo-titulo {
+        font-size: 25px;
+    }
+}
+
+/* ==========================================================
+   BLOG - APARICIÓN SEGURA AL HACER SCROLL
+========================================================== */
+
+/* 
+ * Las tarjetas solo se ocultan si JavaScript
+ * se ha cargado correctamente.
+ */
+
+.hc-js .hc-articulo {
+    opacity: 0;
+    transform: translateY(22px);
+
+    transition:
+        opacity 0.65s ease,
+        transform 0.65s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* Aparición escalonada */
+
+.hc-js .hc-articulo:nth-child(2) {
+    transition-delay: 0.12s;
+}
+
+.hc-js .hc-articulo:nth-child(3) {
+    transition-delay: 0.24s;
+}
+
+
+/* Estado visible */
+
+.hc-js .hc-articulo.hc-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Mantener la elevación al pasar el ratón */
+
+.hc-js .hc-articulo.hc-visible:hover {
+    transform: translateY(-8px);
+}
+
+
+/* Mostrar siempre las tarjetas dentro de Elementor */
+
+.elementor-editor-active .hc-articulo {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+
+/* ==========================================================
+   ACCESIBILIDAD: REDUCIR MOVIMIENTO - BLOG
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .hc-js .hc-articulo {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .hc-articulo,
+    .hc-articulo-imagen__foto,
+    .hc-articulo-enlace::after,
+    .hc-articulo-enlace__brujula {
+        transition: none;
+    }
+
+    .hc-articulo:hover {
+        transform: none;
+    }
+}
+
+/* ==========================================================
+   ENTRADAS DEL BLOG - DISEÑO GENERAL
+========================================================== */
+
+/* Espacio superior del artículo */
+
+body.single-post main {
+    padding-top: 55px;
+}
+
+
+
+
+/* ==========================================================
+   TÍTULOS INTERIORES
+========================================================== */
+
+/* H2 */
+
+body.single-post .entry-content h2 {
+    margin-top: 55px;
+    margin-bottom: 22px;
+
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1.2;
+
+    color: var(--color-primario);
+}
+
+
+/* H3 */
+
+body.single-post .entry-content h3 {
+    margin-top: 38px;
+    margin-bottom: 18px;
+
+    color: var(--color-primario);
+}
+
+
+/* H4 */
+
+body.single-post .hc-single-post__contenido h4 {
+    margin: 32px 0 14px;
+
+    font-size: 19px;
+    line-height: 1.3;
+    font-weight: 600;
+
+    color: var(--color-primario);
+}
+
+
+
+
+
+/* Responsive */
+
+@media (max-width: 767px) {
+
+    body.single-post main {
+        padding-top: 35px;
+    }
+
+    
+
+    body.single-post .hc-single-post__contenido h4 {
+        font-size: 18px;
+        line-height: 1.3;
+
+        margin-top: 28px;
+        margin-bottom: 12px;
+    }
+
+}
+ 
+
+
+
+
+/* ==========================================================
+   SINGLE POST - AJUSTE CABECERA EDITORIAL
+========================================================== */
+
+body.single-post .hc-single-post__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: min(1050px, calc(100% - 40px));
+    margin: 70px auto 65px;
+
+    text-align: center;
+}
+
+
+/* Categoría */
+
+body.single-post .hc-single-post__categoria {
+    position: relative;
+
+    display: inline-block;
+    align-self: center;
+
+    width: auto;
+    margin: 0 auto 28px;
+    padding: 0 0 12px;
+
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+
+    color: var(--color-secundario);
+}
+
+
+/* Pequeña línea decorativa */
+
+body.single-post .hc-single-post__categoria::after {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+
+    width: 42px;
+    height: 2px;
+
+    background: var(--color-primario);
+
+    transform: translateX(-50%);
+}
+
+
+/* Título */
+
+body.single-post .hc-single-post__titulo {
+    width: auto;
+    max-width: 1000px;
+
+    margin: 0 auto 26px;
+
+    font-size: clamp(42px, 5vw, 68px);
+    line-height: 1.08;
+    font-weight: 600;
+    text-align: center;
+
+    color: var(--color-negro);
+}
+
+
+/* Fecha + tiempo de lectura */
+
+body.single-post .hc-single-post__meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    width: auto;
+    margin: 0 auto;
+
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: center;
+
+    color: rgba(34, 34, 34, 0.62);
+}
+
+body.single-post .hc-single-post__separador {
+    color: var(--color-secundario);
+}
+
+
+
+
+/* ==========================================================
+   SINGLE POST - CONTENIDO EDITORIAL
+========================================================== */
+
+body.single-post .hc-single-post__contenido {
+    width: min(820px, calc(100% - 40px));
+    margin: 40px auto 0;
+
+    font-size: 17px;
+    line-height: 1.75;
+
+    color: var(--color-negro);
+}
+
+
+/* Párrafos */
+
+body.single-post .hc-single-post__contenido p {
+    margin: 0 0 24px;
+}
+
+
+/* H2 */
+
+body.single-post .hc-single-post__contenido h2 {
+    margin: 58px 0 22px;
+
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1.2;
+    font-weight: 600;
+
+    color: var(--color-primario);
+}
+
+
+/* H3 */
+
+body.single-post .hc-single-post__contenido h3 {
+    margin: 40px 0 18px;
+
+    font-size: clamp(22px, 2.2vw, 30px);
+    line-height: 1.25;
+    font-weight: 600;
+
+    color: var(--color-primario);
+}
+
+
+/* Listas */
+
+body.single-post .hc-single-post__contenido ul,
+body.single-post .hc-single-post__contenido ol {
+    margin: 0 0 30px;
+    padding-left: 26px;
+}
+
+body.single-post .hc-single-post__contenido li {
+    margin-bottom: 10px;
+}
+
+
+/* Imágenes dentro del artículo */
+
+body.single-post .hc-single-post__contenido img {
+    display: block;
+
+    max-width: 100%;
+    height: auto;
+
+    margin: 40px auto;
+}
+
+
+/* Enlaces dentro del artículo */
+
+body.single-post .hc-single-post__contenido a {
+    color: var(--color-primario);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+
+    transition: color 0.3s ease;
+}
+
+body.single-post .hc-single-post__contenido a:hover {
+    color: var(--color-secundario);
+}
+
+
+/* ==========================================================
+   SINGLE POST - RESPONSIVE MÓVIL
+========================================================== */
+
+@media (max-width: 767px) {
+
+    body.single-post .hc-single-post__contenido {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    body.single-post .hc-single-post__contenido h2 {
+        margin-top: 46px;
+    }
+
+    body.single-post .hc-single-post__contenido h3 {
+        margin-top: 34px;
+    }
+
+    body.single-post .hc-single-post__contenido img {
+        margin: 30px auto;
+    }
+}
+
+
+
+
+
+/* ==========================================================
+   SINGLE POST - VOLVER AL BLOG
+   Brújula que rueda de derecha a izquierda
+========================================================== */
+
+body.single-post .hc-single-post__volver-blog {
+    width: min(650px, calc(100% - 40px));
+    margin: 0 auto 80px;
+
+    text-align: center;
+}
+
+
+/* Enlace */
+
+body.single-post .hc-single-post__volver-blog a {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    padding-right: 30px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--color-primario);
+
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+}
+
+
+/* Brújula */
+
+body.single-post .hc-single-post__volver-brujula {
+    position: absolute;
+
+    right: 0;
+    top: 50%;
+
+    width: 19px;
+    height: 19px;
+
+    background-image: var(--imagen-brujula);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    transform:
+        translateY(-50%)
+        translateX(0)
+        rotate(0deg);
+
+    transition:
+        transform 0.8s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* Hover del texto */
+
+body.single-post .hc-single-post__volver-blog a:hover {
+    color: var(--color-secundario);
+}
+
+
+/* La brújula rueda desde la derecha hasta la izquierda */
+
+body.single-post .hc-single-post__volver-blog a:hover
+.hc-single-post__volver-brujula {
+    transform:
+        translateY(-50%)
+        translateX(-135px)
+        rotate(-720deg);
+}
+
+
+
+
+/* ==========================================================
+   MÓVIL - BOTONES FLOTANTES
+========================================================== */
+
+@media (max-width: 767px) {
+
+    /* WhatsApp */
+
+    .whatsapp-flotante {
+        right: 16px;
+        bottom: 76px;
+
+        width: 44px;
+        height: 44px;
+
+        padding: 0 11px;
+    }
+
+    .whatsapp-flotante:hover,
+    .whatsapp-flotante:focus-visible {
+        width: 44px;
+    }
+
+    .whatsapp-flotante__icono {
+        flex: 0 0 22px;
+
+        width: 22px;
+        height: 22px;
+    }
+
+
+    /* Volver arriba */
+
+    #volver-arriba {
+        right: 16px;
+        bottom: 20px;
+
+        width: 44px;
+        height: 44px;
+    }
+}
+
+
+/* ==========================================================
+   SINGLE POST - AJUSTES EN MÓVIL
+========================================================== */
+
+@media (max-width: 767px) {
+
+    /* Titulares del contenido */
+
+    body.single-post .hc-single-post__contenido h2 {
+        font-size: 26px;
+        line-height: 1.18;
+
+        margin-top: 44px;
+        margin-bottom: 18px;
+    }
+
+    body.single-post .hc-single-post__contenido h3 {
+        font-size: 20px;
+        line-height: 1.25;
+
+        margin-top: 32px;
+        margin-bottom: 14px;
+    }
+}
+
+
+
+/* ==========================================================
+   BLOG - CABECERA
+========================================================== */
+
+.hc-blog__header {
+    width: min(1200px, calc(100% - 40px));
+    margin: 70px auto 65px;
+
+    text-align: center;
+}
+
+.hc-blog__subtitulo {
+    margin: 0 0 16px;
+
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    color: var(--color-secundario);
+}
+
+.hc-blog__titulo {
+    max-width: 850px;
+    margin: 0 auto;
+
+    font-size: clamp(34px, 3.5vw, 52px);
+    line-height: 1.08;
+    font-weight: 600;
+
+    color: var(--color-primario);
+}
+
+
+/* ==========================================================
+   BLOG - PORTADA DESTACADA
+========================================================== */
+
+.hc-blog-destacados {
+    width: min(1200px, calc(100% - 40px));
+    margin: 0 auto 90px;
+}
+
+/* Cabecera editorial de destacados */
+
+.hc-blog-destacados__cabecera {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    margin-bottom: 22px;
+}
+
+.hc-blog-destacados__etiqueta {
+    flex: 0 0 auto;
+
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    color: var(--color-primario);
+}
+
+.hc-blog-destacados__linea {
+    flex: 1;
+
+    height: 1px;
+
+    background: rgba(15, 76, 92, 0.28);
+}
+
+.hc-blog-destacados__brujula {
+    flex: 0 0 22px;
+
+    width: 22px;
+    height: 22px;
+
+    background-image: var(--imagen-brujula);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+
+.hc-blog-destacados__grid {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    grid-template-rows: repeat(2, 260px);
+
+    gap: 24px;
+}
+
+
+/* Tarjeta */
+
+.hc-blog-destacado {
+    position: relative;
+
+    overflow: hidden;
+
+    min-width: 0;
+
+    background: var(--color-negro);
+}
+
+
+/* Principal */
+
+.hc-blog-destacado--principal {
+    grid-row: 1 / 3;
+}
+
+
+/* Enlace */
+
+.hc-blog-destacado__enlace {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    color: var(--color-blanco);
+    text-decoration: none;
+}
+
+
+/* Imagen */
+
+.hc-blog-destacado__imagen {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+}
+
+.hc-blog-destacado__foto {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform 0.7s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* Degradado para facilitar la lectura */
+
+.hc-blog-destacado__overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.78) 0%,
+            rgba(0, 0, 0, 0.38) 45%,
+            rgba(0, 0, 0, 0.05) 75%
+        );
+
+    pointer-events: none;
+}
+
+
+/* Contenido */
+
+.hc-blog-destacado__contenido {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 2;
+
+    padding: 34px;
+}
+
+
+/* Categoría */
+
+.hc-blog-destacado__categoria {
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+    color: var(--color-secundario);
+}
+
+
+/* Título */
+
+.hc-blog-destacado__titulo {
+    max-width: 560px;
+    margin: 0;
+
+    font-size: 32px;
+    line-height: 1.15;
+    font-weight: 600;
+
+    color: var(--color-blanco);
+}
+
+
+/* Los secundarios, un poco más contenidos */
+
+.hc-blog-destacado--secundario
+.hc-blog-destacado__contenido {
+    padding: 24px;
+}
+
+.hc-blog-destacado--secundario
+.hc-blog-destacado__titulo {
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+
+/* Brújula */
+
+.hc-blog-destacado__brujula {
+    position: absolute;
+
+    right: 28px;
+    bottom: 28px;
+
+    width: 22px;
+    height: 22px;
+
+    background-image: var(--imagen-brujula);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    opacity: 0;
+
+    transform: rotate(-90deg) scale(0.8);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.5s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* Hover */
+
+.hc-blog-destacado__enlace:hover
+.hc-blog-destacado__foto {
+    transform: scale(1.04);
+}
+
+.hc-blog-destacado__enlace:hover
+.hc-blog-destacado__brujula {
+    opacity: 1;
+
+    transform: rotate(0deg) scale(1);
+}
+
+
+/* ==========================================================
+   BLOG DESTACADOS - TABLET
+========================================================== */
+
+@media (max-width: 1024px) {
+
+    .hc-blog-destacados__grid {
+        grid-template-columns: 1.4fr 1fr;
+        grid-template-rows: repeat(2, 220px);
+    }
+
+    .hc-blog-destacado__titulo {
+        font-size: 28px;
+    }
+
+    .hc-blog-destacado--secundario
+    .hc-blog-destacado__titulo {
+        font-size: 19px;
+    }
+}
+
+
+/* ==========================================================
+   BLOG DESTACADOS - MÓVIL
+========================================================== */
+
+@media (max-width: 767px) {
+
+    .hc-blog-destacados {
+        width: min(500px, calc(100% - 40px));
+        margin-bottom: 70px;
+    }
+
+    .hc-blog-destacados__grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+
+        gap: 22px;
+    }
+
+    .hc-blog-destacado--principal {
+        grid-row: auto;
+
+        min-height: 420px;
+    }
+
+    .hc-blog-destacado--secundario {
+        min-height: 250px;
+    }
+
+    .hc-blog-destacado__contenido,
+    .hc-blog-destacado--secundario
+    .hc-blog-destacado__contenido {
+        padding: 22px;
+    }
+
+    .hc-blog-destacado__titulo,
+    .hc-blog-destacado--secundario
+    .hc-blog-destacado__titulo {
+        font-size: 22px;
+    }
+
+    .hc-blog-destacado__brujula {
+        right: 20px;
+        bottom: 20px;
+    }
+}
+
+
+/* ==========================================================
+   BLOG - ÚLTIMOS ARTÍCULOS
+========================================================== */
+
+.hc-blog-ultimos {
+    width: min(1200px, calc(100% - 40px));
+    margin: 0 auto 100px;
+}
+
+
+/* Cabecera editorial */
+
+.hc-blog-ultimos__cabecera {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    margin-bottom: 36px;
+}
+
+.hc-blog-ultimos__etiqueta {
+    flex: 0 0 auto;
+
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    color: var(--color-primario);
+}
+
+.hc-blog-ultimos__linea {
+    flex: 1;
+
+    height: 1px;
+
+    background: rgba(15, 76, 92, 0.28);
+}
+
+.hc-blog-ultimos__brujula {
+    flex: 0 0 22px;
+
+    width: 22px;
+    height: 22px;
+
+    background-image: var(--imagen-brujula);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+
+/* ==========================================================
+   TARJETAS HORIZONTALES
+========================================================== */
+
+.hc-blog-ultimos .hc-articulos {
+    display: flex;
+    flex-direction: column;
+
+    gap: 80px;
+
+    max-width: none;
+}
+
+
+/* Cada artículo */
+
+.hc-blog-ultimos .hc-articulo {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+
+    align-items: center;
+
+    gap: 58px;
+
+    transform: none;
+}
+
+
+/* Imagen */
+
+.hc-blog-ultimos .hc-articulo-imagen {
+    aspect-ratio: 16 / 10;
+
+    border-radius: 55px 0 55px 0;
+}
+
+
+/* Contenido */
+
+.hc-blog-ultimos .hc-articulo-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 0;
+}
+
+
+/* Categoría */
+
+.hc-blog-ultimos .hc-articulo-categoria {
+    margin-bottom: 16px;
+}
+
+
+/* Título */
+
+.hc-blog-ultimos .hc-articulo-titulo {
+    max-width: 520px;
+
+    margin-bottom: 22px;
+
+    font-size: clamp(30px, 3vw, 42px);
+    line-height: 1.08;
+}
+
+
+/* Extracto */
+
+.hc-blog-ultimos .hc-articulo-extracto {
+    max-width: 520px;
+
+    margin-bottom: 28px;
+
+    font-size: 17px;
+    line-height: 1.65;
+
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+}
+
+
+/* Evitar el desplazamiento vertical general de la tarjeta */
+
+.hc-blog-ultimos .hc-articulo:hover {
+    transform: none;
+}
+
+
+/* ==========================================================
+   ALTERNANCIA
+========================================================== */
+
+.hc-blog-ultimos .hc-articulo:nth-child(even)
+.hc-articulo-imagen {
+    order: 2;
+}
+
+.hc-blog-ultimos .hc-articulo:nth-child(even)
+.hc-articulo-contenido {
+    order: 1;
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 1024px) {
+
+    .hc-blog-ultimos .hc-articulo {
+        gap: 36px;
+    }
+
+    .hc-blog-ultimos .hc-articulo-titulo {
+        font-size: 30px;
+    }
+
+    .hc-blog-ultimos .hc-articulo-extracto {
+        font-size: 16px;
+    }
+}
+
+
+/* ==========================================================
+   MÓVIL
+========================================================== */
+
+@media (max-width: 767px) {
+
+    .hc-blog-ultimos {
+        width: min(500px, calc(100% - 40px));
+        margin-bottom: 80px;
+    }
+
+    .hc-blog-ultimos__cabecera {
+        margin-bottom: 28px;
+    }
+
+    .hc-blog-ultimos .hc-articulos {
+        gap: 60px;
+    }
+
+    .hc-blog-ultimos .hc-articulo {
+        display: flex;
+        flex-direction: column;
+
+        gap: 24px;
+    }
+
+    .hc-blog-ultimos .hc-articulo-imagen,
+    .hc-blog-ultimos .hc-articulo-contenido {
+        order: initial;
+    }
+
+    .hc-blog-ultimos .hc-articulo-titulo {
+        font-size: 26px;
+    }
+
+    .hc-blog-ultimos .hc-articulo-extracto {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+}
+
+
+
+
+/* ==========================================================
+   TABLET / MÓVIL
+========================================================== */
+
+@media (max-width: 1024px) {
+
+    body.single-post .hc-single-post__layout {
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+
+        width: min(820px, calc(100% - 40px));
+    }
+
+    body.single-post .hc-single-post__aside {
+        position: static;
+
+        width: min(520px, 100%);
+        margin: 0 auto;
+    }
+}
+
+
+/* ==========================================================
+   SINGLE POST - ASIDE
+========================================================== */
+
+
+/* ----------------------------------------------------------
+   Layout principal
+---------------------------------------------------------- */
+
+body.single-post .hc-single-post__layout {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 820px)
+        minmax(220px, 280px);
+
+    gap: 70px;
+
+    width: min(1180px, calc(100% - 40px));
+    margin: 40px auto 0;
+
+    align-items: start;
+}
+
+
+/* El contenido usa ahora la columna del grid */
+
+body.single-post
+.hc-single-post__layout
+.hc-single-post__contenido {
+    width: auto;
+    margin: 0;
+}
+
+
+/* ----------------------------------------------------------
+   Aside
+---------------------------------------------------------- */
+
+body.single-post .hc-single-post__aside {
+    position: sticky;
+    top: 120px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 42px;
+}
+
+
+/* Bloques interiores */
+
+body.single-post .hc-single-post__aside-bloque {
+    padding-top: 22px;
+
+    border-top: 1px solid rgba(15, 76, 92, 0.22);
+}
+
+
+/* Titulares */
+
+body.single-post .hc-single-post__aside-titulo {
+    margin: 0 0 18px;
+
+    font-size: 13px;
+    line-height: 1.3;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    color: var(--color-primario);
+}
+
+
+/* ----------------------------------------------------------
+   Categorías
+---------------------------------------------------------- */
+
+body.single-post .hc-single-post__categorias {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+body.single-post .hc-single-post__categoria-aside {
+    display: inline-flex;
+    align-items: center;
+
+    width: fit-content;
+
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 500;
+
+    color: var(--color-negro);
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+body.single-post .hc-single-post__categoria-aside::before {
+    content: "";
+
+    width: 18px;
+    height: 1px;
+
+    margin-right: 9px;
+
+    background: var(--color-secundario);
+
+    transition: width 0.3s ease;
+}
+
+body.single-post .hc-single-post__categoria-aside:hover {
+    color: var(--color-primario);
+}
+
+body.single-post .hc-single-post__categoria-aside:hover::before {
+    width: 28px;
+}
+
+
+/* ----------------------------------------------------------
+   Etiquetas
+---------------------------------------------------------- */
+
+body.single-post .hc-single-post__etiquetas {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+body.single-post .hc-single-post__etiqueta {
+    display: inline-block;
+
+    padding: 7px 10px;
+
+    font-size: 12px;
+    line-height: 1.2;
+
+    color: var(--color-primario);
+
+    border: 1px solid rgba(15, 76, 92, 0.28);
+
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+body.single-post .hc-single-post__etiqueta:hover {
+    color: var(--color-secundario);
+    border-color: var(--color-secundario);
+}
+
+
+/* ----------------------------------------------------------
+   Anterior / siguiente
+---------------------------------------------------------- */
+
+body.single-post .hc-single-post__aside-nav {
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+}
+
+body.single-post .hc-single-post__aside-nav-item {
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+
+    color: var(--color-negro);
+    text-decoration: none;
+}
+
+body.single-post .hc-single-post__aside-nav-etiqueta {
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    color: var(--color-secundario);
+}
+
+body.single-post .hc-single-post__aside-nav-titulo {
+    font-size: 15px;
+    line-height: 1.35;
+    font-weight: 500;
+
+    transition: color 0.3s ease;
+}
+
+body.single-post
+.hc-single-post__aside-nav-item:hover
+.hc-single-post__aside-nav-titulo {
+    color: var(--color-primario);
+}
+
+
+/* ----------------------------------------------------------
+   También te puede interesar
+---------------------------------------------------------- */
+
+body.single-post .hc-single-post__aside-relacionados {
+    display: flex;
+    flex-direction: column;
+
+    gap: 36px;
+}
+
+body.single-post .hc-single-post__aside-relacionado {
+    margin: 0;
+}
+
+body.single-post .hc-single-post__aside-relacionado-enlace {
+    display: block;
+
+    color: var(--color-negro);
+    text-decoration: none;
+}
+
+body.single-post .hc-single-post__aside-relacionado-imagen {
+    overflow: hidden;
+
+    width: 100%;
+    aspect-ratio: 16 / 9;
+
+    margin-bottom: 10px;
+}
+
+body.single-post .hc-single-post__aside-relacionado-foto {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.4s ease;
+}
+
+body.single-post
+.hc-single-post__aside
+.hc-single-post__aside-relacionado-titulo {
+    margin: 10px 0 0;
+
+    font-size: 18px;
+    line-height: 1.3;
+    font-weight: 500;
+
+    color: var(--color-primario);
+}
+
+body.single-post
+.hc-single-post__aside-relacionado-enlace:hover
+.hc-single-post__aside-relacionado-foto {
+    transform: scale(1.04);
+}
+
+body.single-post
+.hc-single-post__aside-relacionado-enlace:hover
+.hc-single-post__aside-relacionado-titulo {
+    color: var(--color-secundario);
+}
+
+
+/* ----------------------------------------------------------
+   Tablet y móvil
+---------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+
+    body.single-post .hc-single-post__layout {
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+
+        width: min(820px, calc(100% - 40px));
+    }
+
+    body.single-post .hc-single-post__aside {
+        position: static;
+
+        width: min(520px, 100%);
+        margin: 0 auto;
+    }
+}
+
+/* ==========================================================
+   FOOTER - FRANJA LEGAL A ANCHO COMPLETO
+========================================================== */
+
+.hc-footer-legal {
+    position: relative;
+
+    width: 100vw !important;
+    max-width: none !important;
+
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+}
+
+
+/* ==========================================================
+   FOOTER - GRID RESPONSIVE
+========================================================== */
+
+@media (max-width: 767px) {
+
+    .hc-footer-contenido {
+        display: grid !important;
+
+        grid-template-columns: minmax(0, 1fr) !important;
+
+        width: 100% !important;
+        max-width: none !important;
+        row-gap: 48px !important;
+
+        /* Más espacio útil en móvil */
+        padding-left: 25px !important;
+        padding-right: 25px !important;
+    }
+    }
+
+    .hc-footer-columna {
+        width: 100% !important;
+        max-width: none !important;
+
+        justify-self: stretch !important;
+        align-self: stretch !important;
+    }
+
+
+    /* ==========================================================
+   FOOTER - FRANJA LEGAL EN MÓVIL
+========================================================== */
+
+@media (max-width: 767px) {
+
+    .hc-footer-legal {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        gap: 10px !important;
+
+        padding: 18px 22px 22px !important;
+
+        text-align: center !important;
+    }
+
+    .hc-footer-legal p {
+        margin: 0 !important;
+
+        font-size: 12px !important;
+        line-height: 1.45 !important;
+    }
+}
