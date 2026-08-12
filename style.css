@@ -2528,7 +2528,7 @@ body.single-post
 .hc-footer-legal {
     position: relative;
 
-    width: 100vw !important;
+    width: 100% !important;
     max-width: none !important;
 
     margin-left: calc(50% - 50vw) !important;
@@ -2591,4 +2591,54 @@ body.single-post
         font-size: 12px !important;
         line-height: 1.45 !important;
     }
+}
+
+/* ==========================================================
+   FOOTER - TABLET
+========================================================== */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    /* Contacto necesita más espacio que Horizonte Camper */
+    .hc-footer-grid {
+        grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+
+        /* Las filas ocupan solo lo que necesita su contenido */
+        grid-template-rows: auto auto !important;
+        grid-auto-rows: auto !important;
+        align-content: start !important;
+    }
+
+    /* Servicios ocupa toda la segunda fila */
+    .footer-servicios {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+/* ==========================================================
+   CONÓCENOS - EVITAR OVERFLOW DEL SHAPE DIVIDER
+========================================================== */
+
+.hc-conocenos-shape {
+    overflow-x: hidden !important;
+}
+
+
+/* ==========================================================
+   ALQUILER HOME - CONTROL DEL DESBORDAMIENTO
+========================================================== */
+
+.hc-alquiler-home {
+    overflow: hidden;
+}
+
+
+/* ==========================================================
+   ALQUILER HOME - RECORTE DE IMAGEN ABSOLUTA
+========================================================== */
+
+#hc-alquiler-recorte {
+    overflow: hidden !important;
 }
