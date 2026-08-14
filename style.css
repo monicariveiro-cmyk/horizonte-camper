@@ -2646,7 +2646,7 @@ body.single-post
    FILOSOFIA  - QUITAR ANIMACIONES DE LINEAS EN MÓVIL
 ========================================================== */
 
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
 
     #filosofia-intro::before,
     #filosofia-intro::after,
@@ -2673,4 +2673,19 @@ body.single-post
 
         transform: translateX(-50%) !important;
     }
+}
+
+
+/* ==========================================================
+   ALQUILER - EVITAR RECORTE DE LA FURGONETA EN TABLET
+========================================================== */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    #hc-alquiler-recorte {
+        overflow: visible !important;
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+    }
+
 }
