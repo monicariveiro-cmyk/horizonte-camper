@@ -2689,3 +2689,243 @@ body.single-post
     }
 
 }
+
+
+/* =========================================================
+   FORMULARIO INFORMACIÓN - ASIDE HISTORIA
+   ========================================================= */
+
+.hc-form-info {
+    background-color: #0F4C5C;
+    padding: 40px;
+}
+
+/* Textos del formulario */
+.hc-form-info h2 {
+    color: #FFFFFF;
+}
+
+.hc-form-info label {
+    color: #FFFFFF;
+}
+
+
+/* Separación entre campos del formulario */
+.hc-form-campo {
+    margin-bottom: 20px;
+}
+
+.hc-form-campo label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.hc-form-privacidad {
+    margin-bottom: 20px;
+}
+
+
+.hc-form-brujula {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background-image: var(--imagen-brujula);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    background-color: #FFFFFF;
+    border-radius: 50%;
+
+    transition: transform 0.5s ease;
+}
+
+.hc-form-info button.hc-form-enviar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background-color: transparent;
+    border: 1px solid #D96B43;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.hc-form-info button.hc-form-enviar:hover .hc-form-brujula {
+    transform: translateX(-285px) rotate(-360deg);
+}
+
+
+/* Texto de privacidad */
+.hc-form-privacidad p {
+    color: #FFFFFF;
+}
+
+/* Enlace a la política de privacidad */
+.hc-form-privacidad p a {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+
+.hc-form-privacidad p {
+    color: #FFFFFF;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+
+.hc-form-info button.hc-form-enviar:hover {
+    background-color: #D96B43;
+    border-color: #D96B43;
+    color: #FFFFFF;
+}
+
+/* =========================================================
+   FORMULARIO - ESTADO FOCUS DE LOS CAMPOS
+   ========================================================= */
+
+.hc-form-info input:focus,
+.hc-form-info textarea:focus {
+    border: 2px solid #D96B43;
+    outline: 2px solid rgba(217, 107, 67, 0.45);
+    outline-offset: 2px;
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   ASIDE - ENLACE LEER ARTÍCULO
+   ========================================================= */
+
+.hc-leer-articulo {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: max-content;
+
+    color: #0F4C5C;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Texto */
+.hc-leer-articulo > span:first-child {
+    transition: color 0.3s ease;
+}
+
+.hc-leer-linea {
+    position: relative;
+    display: block;
+
+    /* La línea ocupa exactamente el ancho del texto */
+    width: 100%;
+    height: 24px;
+    margin-top: 2px;
+
+    opacity: 0;
+    transform: translateY(-5px);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+/* Línea naranja */
+.hc-leer-linea::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+
+    height: 1px;
+    background-color: #D96B43;
+}
+
+/* Brújula */
+.hc-leer-brujula {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 22px;
+    height: 22px;
+
+    background-image: var(--imagen-brujula);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #F8F5EF;
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%) rotate(-180deg);
+
+    transition: transform 0.5s ease;
+}
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.hc-leer-articulo:hover {
+    color: #D96B43;
+}
+
+.hc-leer-articulo:hover .hc-leer-linea {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hc-leer-articulo:hover .hc-leer-brujula {
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+
+/* =========================================================
+   ASIDE BLOG - HOVER IMAGEN Y TÍTULO
+   ========================================================= */
+
+/* Imagen */
+.hc-blog-imagen img {
+    transition: transform 0.5s ease;
+}
+
+.hc-blog-imagen:hover img {
+    transform: scale(1.04);
+}
+
+/* Título */
+.hc-blog-titulo .elementor-heading-title {
+    transition: transform 0.3s ease, color 0.3s ease;
+    transform-origin: left center;
+}
+
+.hc-blog-titulo:hover .elementor-heading-title {
+    transform: scale(1.03);
+    color: #D96B43;
+}
+
+
+/* =========================================================
+   FORMULARIO - MENSAJE DE CONFIRMACIÓN
+   ========================================================= */
+
+.hc-form-mensaje {
+    width: 100%;
+    padding: 18px 22px;
+    margin-bottom: 18px;
+
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.hc-form-mensaje-exito {
+    color: #FFFFFF;
+    background-color: #0F4C5C;
+    border-left: 4px solid #D96B43;
+}
