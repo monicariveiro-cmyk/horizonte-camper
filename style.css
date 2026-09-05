@@ -2860,7 +2860,464 @@ body.single-post
 }
 
 
+/* ==========================================================
+   SERVICIOS - DESPLEGABLES DE INSTALACIONES
+========================================================== */
+
+.hc-servicio-desplegable {
+    width: 100%;
+}
+
+.hc-servicio-desplegable button.hc-servicio-titulo {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 5px;
+
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+
+    padding: 4px 8px !important;
+
+    background: #f5f1e8 !important;
+    
+
+    font-family: var(--font-primary) !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    line-height: 1.1 !important;
+
+    color: #355C6D !important;
+
+    cursor: pointer;
+
+    transition:
+    background-color .3s ease,
+    color .3s ease;
+}
+
+.hc-servicio-flecha {
+    margin-left: 0;
+    font-size: 14px;
+    line-height: 1;
+    color: var(--color-secundario) !important;
+
+    transition:
+        transform .35s ease,
+        color .3s ease;
+}
+
+
+/* Texto cerrado */
+.hc-servicio-contenido {
+    display: grid;
+    grid-template-rows: 0fr;
+
+    opacity: 0;
+
+    transition:
+        grid-template-rows .4s cubic-bezier(.22, 1, .36, 1),
+        opacity .3s ease;
+}
+
+.hc-servicio-contenido > p {
+    overflow: hidden;
+
+    margin: 0;
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* Estado abierto */
+.hc-servicio-desplegable.activo .hc-servicio-contenido {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.hc-servicio-desplegable.activo .hc-servicio-flecha {
+    transform: rotate(180deg);
+}
+
+.hc-servicio-desplegable button.hc-servicio-titulo:hover {
+    background: #355C6D !important;
+    color: #FFFFFF !important;
+}
+
+.hc-servicio-desplegable button.hc-servicio-titulo:hover .hc-servicio-flecha {
+    color: #FFFFFF !important;
+}
 
 
 
+/* ==========================================================
+   SERVICIOS - MARQUESINA DE MARCAS
+========================================================== */
 
+.hc-marcas-marquesina {
+    width: 100%;
+    overflow: hidden;
+    padding: 24px 0;
+    background: #f5f1e8;
+}
+
+
+/* Pista animada */
+.hc-marcas-track {
+    display: flex;
+    width: max-content;
+
+    animation: hc-marcas-vaiven 8s linear infinite alternate;
+}
+
+
+/* Grupo de logos */
+.hc-marcas-grupo {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+
+/* Logos */
+.hc-marcas-grupo img {
+    display: block !important;
+
+    width: auto !important;
+    height: 28px !important;
+
+    max-width: 120px !important;
+    max-height: 28px !important;
+
+    object-fit: contain;
+}
+
+
+/* Movimiento de ida y vuelta */
+@keyframes hc-marcas-vaiven {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(-100% + 100vw));
+    }
+
+}
+
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+
+    .hc-marcas-track {
+        animation: none;
+    }
+
+}
+
+
+/* ==========================================================
+   SERVICIOS - IMAGEN DE MARCAS A ALTURA COMPLETA
+========================================================== */
+
+.hc-marcas-imagen-contenedor {
+    position: relative;
+    overflow: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.hc-marcas-imagen {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.hc-marcas-imagen .elementor-widget-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden !important;
+}
+
+.hc-marcas-imagen img {
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: cover !important;
+    object-position: center center;
+
+    transition: transform .7s cubic-bezier(.22, 1, .36, 1) !important;
+}
+
+.hc-marcas-imagen-contenedor {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.hc-marcas-imagen {
+    width: 100%;
+    height: 100%;
+}
+
+.hc-marcas-imagen .elementor-widget-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.hc-marcas-imagen img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+
+    transition: transform .7s cubic-bezier(.22, 1, .36, 1);
+}
+
+.hc-marcas-imagen-contenedor:hover img {
+    transform: scale(1.05);
+}
+
+/* ==========================================================
+   FORMULARIO - CONFIGURACION CAMPER
+========================================================== */
+
+
+.hc-config-paso {
+    margin-top: 40px;
+}
+
+.hc-config-numero {
+    display: inline-block;
+
+    margin-bottom: 6px;
+
+    font-family: var(--font-primary);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+
+    color: var(--color-secundario);
+}
+
+.hc-config-paso h3 {
+    margin: 0 0 10px;
+
+    font-family: var(--font-primary);
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.2;
+
+    color: var(--color-primario);
+}
+
+.hc-config-paso p {
+    margin: 0;
+
+    font-family: var(--font-primary);
+    font-size: 15px;
+    line-height: 1.6;
+
+    color: #000000;
+}
+
+
+/* ==========================================================
+   FORMULARIO - CONFIGURACION CAMPER -
+   CAMPOS DEL FORMULARIO
+========================================================== */
+
+
+
+.hc-config-campos {
+    display: grid;
+    gap: 28px;
+    margin-top: 28px;
+}
+
+.hc-config-grupo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+}
+
+.hc-config-pregunta {
+    width: 100%;
+    margin: 0 0 8px;
+
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-primario);
+}
+
+.hc-config-grupo label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 7px 10px;
+
+    border: 1px solid rgba(53, 92, 109, .25);
+    border-radius: 4px;
+
+    font-size: 14px;
+    color: #355C6D;
+
+    cursor: pointer;
+}
+
+.hc-config-grupo input[type="radio"] {
+    accent-color: var(--color-secundario);
+}
+
+.hc-config-grupo input[type="checkbox"] {
+    accent-color: var(--color-secundario);
+}
+
+
+.hc-config-grupo input[type="text"],
+.hc-config-grupo input[type="email"],
+.hc-config-grupo input[type="tel"],
+.hc-config-grupo select,
+.hc-config-grupo textarea {
+    width: 100%;
+    padding: 11px 12px;
+
+    border: 1px solid rgba(53, 92, 109, .28);
+    border-radius: 4px;
+
+    font-family: var(--font-primary);
+    font-size: 14px;
+    color: #355C6D;
+
+    background: #FFFFFF;
+}
+
+.hc-config-grupo input:focus,
+.hc-config-grupo select:focus,
+.hc-config-grupo textarea:focus {
+    outline: 2px solid rgba(217, 107, 67, .30);
+    border-color: var(--color-secundario);
+}
+
+.hc-config-privacidad {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+
+    font-size: 13px;
+    line-height: 1.5;
+    color: #355C6D;
+}
+
+.hc-config-enviar {
+    padding: 11px 18px;
+
+    background: var(--color-primario);
+    border: 0;
+    border-radius: 4px;
+
+    font-family: var(--font-primary);
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--color-blanco);
+
+    cursor: pointer;
+
+    transition:
+        background-color .3s ease,
+        transform .3s ease;
+}
+
+.hc-config-enviar:hover {
+    background: var(--color-secundario);
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================================
+   CONFIGURADOR CAMPER - MENSAJES
+========================================================== */
+
+.hc-config-mensaje {
+    width: 100%;
+    margin: 24px 0;
+    padding: 16px 18px;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.hc-config-mensaje-exito {
+    color: #FFFFFF;
+    background: var(--color-primario);
+    border-left: 4px solid var(--color-secundario);
+}
+
+.hc-config-mensaje-error {
+    color: #FFFFFF;
+    background: #8B3A3A;
+    border-left: 4px solid var(--color-secundario);
+}
+
+
+/* ==========================================================
+   CONFIGURADOR - ASIDE BLOG - ZOOM EN IMÁGENES
+========================================================== */
+
+.hc-aside-blog-imagen {
+    overflow: hidden;
+}
+
+.hc-aside-blog-imagen .elementor-widget-container {
+    overflow: hidden;
+}
+
+.hc-aside-blog-imagen img {
+    display: block;
+    width: 100%;
+
+    transition: transform .6s cubic-bezier(.22, 1, .36, 1);
+}
+
+.hc-aside-blog-imagen:hover img {
+    transform: scale(1.04);
+}
+
+
+/* ==========================================================
+   SERVICIOS - ASIDE STICKY
+========================================================== */
+
+.hc-configurador-layout {
+    overflow: visible !important;
+    align-items: flex-start;
+}
+
+.hc-configurador-aside .hc-servicios-aside-sticky {
+    position: sticky !important;
+    top: 120px;
+    width: 100%;
+    align-self: flex-start;
+}
+
+.hc-servicios-aside-sticky {
+    position: sticky;
+    top: 120px;
+    width: 100%;
+}
+
+
+/* Tablet y móvil */
+@media (max-width: 1024px) {
+    .hc-configurador-aside .hc-servicios-aside-sticky {
+        position: static !important;
+    }
+}

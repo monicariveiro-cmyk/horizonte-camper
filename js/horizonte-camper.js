@@ -244,3 +244,64 @@ document.addEventListener(
 
     }
 );
+
+
+/* ==========================================================
+   SERVICIOS - ACORDEONES
+========================================================== */
+
+document.querySelectorAll('.hc-servicio-titulo').forEach((boton) => {
+
+    boton.addEventListener('click', () => {
+
+        const servicio = boton.closest('.hc-servicio-desplegable');
+
+        const abierto = servicio.classList.toggle('activo');
+
+        boton.setAttribute('aria-expanded', abierto);
+
+    });
+
+});
+
+
+/* ==========================================================
+   CONFIGURADOR CAMPER - CREAR FORMULARIO
+========================================================== */
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const configurador = document.querySelector('.hc-configurador');
+
+    if (!configurador) {
+        return;
+    }
+
+    /* Evita crear el formulario dos veces */
+    if (configurador.querySelector('#hc-configurador-form')) {
+        return;
+    }
+
+    const formulario = document.createElement('form');
+
+    formulario.id = 'hc-configurador-form';
+    formulario.className = 'hc-configurador-form';
+    formulario.method = 'post';
+
+
+    /* Mueve todo el contenido del configurador dentro del formulario */
+    while (configurador.firstChild) {
+        formulario.appendChild(configurador.firstChild);
+    }
+
+    configurador.appendChild(formulario);
+
+
+    /* Recuperamos admin-post.php desde el shortcode */
+    const meta = formulario.querySelector('.hc-config-meta');
+
+    if (meta && meta.dataset.action) {
+        formulario.action = meta.dataset.action;
+    }
+
+});

@@ -411,3 +411,427 @@ if (
 }
 
 add_shortcode( 'hc_formulario_info', 'hc_shortcode_formulario_info' );
+
+
+/* ==========================================================
+   CONFIGURADOR CAMPER - DATOS DEL FORMULARIO
+========================================================== */
+
+function hc_configurador_meta_shortcode() {
+
+    $html  = '<div class="hc-config-meta"';
+    $html .= ' data-action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"';
+    $html .= ' style="display:none;">';
+
+    $html .= '<input type="hidden" name="action" value="hc_enviar_configurador">';
+
+    $html .= wp_nonce_field(
+        'hc_configurador_camper',
+        'hc_config_nonce',
+        true,
+        false
+    );
+
+    $html .= '</div>';
+
+    return $html;
+}
+
+add_shortcode(
+    'hc_configurador_meta',
+    'hc_configurador_meta_shortcode'
+);
+
+
+
+/* ==========================================================
+   CONFIGURADOR CAMPER - PROCESAR FORMULARIO
+========================================================== */
+
+function hc_procesar_configurador() {
+
+    /* ------------------------------------------------------
+       1. Comprobar método
+    ------------------------------------------------------ */
+
+    if ( $_SERVER['REQUEST_METHOD'] !== 'POST' ) {
+        wp_die( 'Método no permitido.' );
+    }
+
+
+    /* ------------------------------------------------------
+       2. Verificar nonce
+    ------------------------------------------------------ */
+
+    if (
+        ! isset( $_POST['hc_config_nonce'] ) ||
+        ! wp_verify_nonce(
+            sanitize_text_field( wp_unslash( $_POST['hc_config_nonce'] ) ),
+            'hc_configurador_camper'
+        )
+    ) {
+        wp_die( 'No se pudo verificar la solicitud.' );
+    }
+
+
+    /* ------------------------------------------------------
+       3. Funciones auxiliares
+    ------------------------------------------------------ */
+
+    $texto = function( $campo ) {
+
+        return isset( $_POST[ $campo ] )
+            ? sanitize_text_field( wp_unslash( $_POST[ $campo ] ) )
+            : '';
+    };
+
+
+    $lista = function( $campo ) {
+
+        if (
+            ! isset( $_POST[ $campo ] ) ||
+            ! is_array( $_POST[ $campo ] )
+        ) {
+            return array();
+        }
+
+        return array_map(
+            'sanitize_text_field',
+            wp_unslash( $_POST[ $campo ] )
+        );
+    };
+
+
+    /* ------------------------------------------------------
+       4. Vehículo
+    ------------------------------------------------------ */
+
+    $vehiculo_modelo     = $texto( 'vehiculo_modelo' );
+    $vehiculo_longitud   = $texto( 'vehiculo_longitud' );
+    $vehiculo_altura     = $texto( 'vehiculo_altura' );
+    $vehiculo_disponible = $texto( 'vehiculo_disponible' );
+
+
+    /* ------------------------------------------------------
+       5. Viajeros y plazas
+    ------------------------------------------------------ */
+
+    $viajeros = $texto( 'viajeros' );
+    $plazas   = $lista( 'plazas' );
+
+
+    /* ------------------------------------------------------
+       6. Descanso
+    ------------------------------------------------------ */
+
+    $plazas_dormir = $texto( 'plazas_dormir' );
+    $descanso      = $lista( 'descanso' );
+
+
+    /* ------------------------------------------------------
+       7. Cocina
+    ------------------------------------------------------ */
+
+    $cocina = $lista( 'cocina' );
+
+
+    /* ------------------------------------------------------
+       8. Baño y agua
+    ------------------------------------------------------ */
+
+    $agua = $lista( 'agua' );
+
+
+    /* ------------------------------------------------------
+       9. Energía
+    ------------------------------------------------------ */
+
+    $autonomia = $texto( 'autonomia' );
+    $energia   = $lista( 'energia' );
+
+
+    /* ------------------------------------------------------
+       10. Confort
+    ------------------------------------------------------ */
+
+    $confort = $lista( 'confort' );
+
+
+    /* ------------------------------------------------------
+       11. Exterior
+    ------------------------------------------------------ */
+
+    $exterior = $lista( 'exterior' );
+
+
+    /* ------------------------------------------------------
+       12. Acabados
+    ------------------------------------------------------ */
+
+    $estilo_interior = $texto( 'estilo_interior' );
+    $acabados        = $lista( 'acabados' );
+
+    $ideas_camper = isset( $_POST['ideas_camper'] )
+        ? sanitize_textarea_field(
+            wp_unslash( $_POST['ideas_camper'] )
+        )
+        : '';
+
+
+    /* ------------------------------------------------------
+       13. Datos de contacto
+    ------------------------------------------------------ */
+
+    $nombre    = $texto( 'nombre' );
+    $apellidos = $texto( 'apellidos' );
+
+    $email = isset( $_POST['email'] )
+        ? sanitize_email(
+            wp_unslash( $_POST['email'] )
+        )
+        : '';
+
+    $telefono = $texto( 'telefono' );
+    $localidad = $texto( 'localidad' );
+    $inicio_proyecto = $texto( 'inicio_proyecto' );
+
+
+    /* ------------------------------------------------------
+       14. Validaciones mínimas
+    ------------------------------------------------------ */
+
+    if (
+        empty( $nombre ) ||
+        empty( $apellidos ) ||
+        empty( $email ) ||
+        ! is_email( $email ) ||
+        empty( $telefono )
+    ) {
+
+        $redirect = add_query_arg(
+            'configurador',
+            'error',
+            wp_get_referer()
+        );
+
+        wp_safe_redirect( $redirect );
+        exit;
+    }
+
+
+    if ( empty( $_POST['privacidad'] ) ) {
+
+        $redirect = add_query_arg(
+            'configurador',
+            'privacidad',
+            wp_get_referer()
+        );
+
+        wp_safe_redirect( $redirect );
+        exit;
+    }
+
+
+    /* ------------------------------------------------------
+       15. Construir correo
+    ------------------------------------------------------ */
+
+    $mensaje  = "SOLICITUD DE CAMPERIZACIÓN\n\n";
+
+
+    $mensaje .= "VEHÍCULO\n";
+    $mensaje .= "Modelo: " . $vehiculo_modelo . "\n";
+    $mensaje .= "Longitud: " . $vehiculo_longitud . "\n";
+    $mensaje .= "Altura: " . $vehiculo_altura . "\n";
+    $mensaje .= "¿Ya tiene furgoneta?: " . $vehiculo_disponible . "\n\n";
+
+
+    $mensaje .= "VIAJEROS Y PLAZAS\n";
+    $mensaje .= "Viajeros habituales: " . $viajeros . "\n";
+
+    if ( ! empty( $plazas ) ) {
+        $mensaje .= "- " . implode( "\n- ", $plazas ) . "\n";
+    }
+
+    $mensaje .= "\n";
+
+
+    $mensaje .= "DESCANSO\n";
+    $mensaje .= "Plazas para dormir: " . $plazas_dormir . "\n";
+
+    if ( ! empty( $descanso ) ) {
+        $mensaje .= "- " . implode( "\n- ", $descanso ) . "\n";
+    }
+
+    $mensaje .= "\n";
+
+
+    $mensaje .= "COCINA\n";
+
+    if ( ! empty( $cocina ) ) {
+        $mensaje .= "- " . implode( "\n- ", $cocina ) . "\n";
+    }
+
+    $mensaje .= "\n";
+
+
+    $mensaje .= "BAÑO Y AGUA\n";
+
+    if ( ! empty( $agua ) ) {
+        $mensaje .= "- " . implode( "\n- ", $agua ) . "\n";
+    }
+
+    $mensaje .= "\n";
+
+
+    $mensaje .= "ENERGÍA Y AUTONOMÍA\n";
+    $mensaje .= "Autonomía: " . $autonomia . "\n";
+
+    if ( ! empty( $energia ) ) {
+        $mensaje .= "- " . implode( "\n- ", $energia ) . "\n";
+    }
+
+    $mensaje .= "\n";
+
+
+    $mensaje .= "CONFORT\n";
+
+    if ( ! empty( $confort ) ) {
+        $mensaje .= "- " . implode( "\n- ", $confort ) . "\n";
+    }
+
+    $mensaje .= "\n";
+
+
+    $mensaje .= "EXTERIOR\n";
+
+    if ( ! empty( $exterior ) ) {
+        $mensaje .= "- " . implode( "\n- ", $exterior ) . "\n";
+    }
+
+    $mensaje .= "\n";
+
+
+    $mensaje .= "ACABADOS\n";
+    $mensaje .= "Estilo interior: " . $estilo_interior . "\n";
+
+    if ( ! empty( $acabados ) ) {
+        $mensaje .= "- " . implode( "\n- ", $acabados ) . "\n";
+    }
+
+    if ( ! empty( $ideas_camper ) ) {
+        $mensaje .= "\nIdeas del cliente:\n";
+        $mensaje .= $ideas_camper . "\n";
+    }
+
+    $mensaje .= "\n";
+
+
+    $mensaje .= "DATOS DEL CLIENTE\n";
+    $mensaje .= "Nombre: " . $nombre . " " . $apellidos . "\n";
+    $mensaje .= "Email: " . $email . "\n";
+    $mensaje .= "Teléfono: " . $telefono . "\n";
+    $mensaje .= "Localidad: " . $localidad . "\n";
+    $mensaje .= "Inicio del proyecto: " . $inicio_proyecto . "\n";
+
+
+    /* ------------------------------------------------------
+       16. Enviar correo
+    ------------------------------------------------------ */
+
+    $destinatario = get_option( 'admin_email' );
+
+    $asunto = 'Nueva solicitud de camperización';
+
+    $cabeceras = array(
+        'Reply-To: ' . $nombre . ' ' . $apellidos . ' <' . $email . '>',
+    );
+
+    $enviado = wp_mail(
+        $destinatario,
+        $asunto,
+        $mensaje,
+        $cabeceras
+    );
+
+
+    /* ------------------------------------------------------
+       17. Redirección
+    ------------------------------------------------------ */
+
+    $estado = $enviado ? 'enviado' : 'error';
+
+    $redirect = add_query_arg(
+        'configurador',
+        $estado,
+        wp_get_referer()
+    );
+
+    wp_safe_redirect( $redirect );
+    exit;
+}
+
+
+/* Usuario conectado */
+add_action(
+    'admin_post_hc_enviar_configurador',
+    'hc_procesar_configurador'
+);
+
+
+/* Usuario no conectado */
+add_action(
+    'admin_post_nopriv_hc_enviar_configurador',
+    'hc_procesar_configurador'
+);
+
+
+/* ==========================================================
+   CONFIGURADOR CAMPER - MENSAJES DE ESTADO
+========================================================== */
+
+function hc_configurador_mensaje_shortcode() {
+
+    if ( ! isset( $_GET['configurador'] ) ) {
+        return '';
+    }
+
+    $estado = sanitize_text_field(
+        wp_unslash( $_GET['configurador'] )
+    );
+
+    if ( $estado === 'enviado' ) {
+
+        return '
+            <div class="hc-config-mensaje hc-config-mensaje-exito">
+                Gracias. Hemos recibido tu solicitud de camperización.
+                Revisaremos la configuración y nos pondremos en contacto contigo.
+            </div>
+        ';
+    }
+
+    if ( $estado === 'privacidad' ) {
+
+        return '
+            <div class="hc-config-mensaje hc-config-mensaje-error">
+                Debes aceptar la política de privacidad para enviar la solicitud.
+            </div>
+        ';
+    }
+
+    if ( $estado === 'error' ) {
+
+        return '
+            <div class="hc-config-mensaje hc-config-mensaje-error">
+                No hemos podido enviar la solicitud. Revisa los datos e inténtalo de nuevo.
+            </div>
+        ';
+    }
+
+    return '';
+}
+
+add_shortcode(
+    'hc_configurador_mensaje',
+    'hc_configurador_mensaje_shortcode'
+);
