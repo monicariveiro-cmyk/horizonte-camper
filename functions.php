@@ -835,3 +835,81 @@ add_shortcode(
     'hc_configurador_mensaje',
     'hc_configurador_mensaje_shortcode'
 );
+
+
+/* ==========================================================
+   FOOTER - ÚLTIMAS ENTRADAS DINÁMICAS
+========================================================== */
+
+function hc_footer_ultimas_entradas_shortcode() {
+
+    $query = new WP_Query( array(
+        'post_type'           => 'post',
+        'post_status'         => 'publish',
+        'posts_per_page'      => 3,
+        'ignore_sticky_posts' => true,
+        'orderby'             => 'date',
+        'order'               => 'DESC',
+    ) );
+
+    if ( ! $query->have_posts() ) {
+        return '';
+    }
+
+    ob_start();
+    ?>
+
+    <div class="hc-footer-posts">
+
+        <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+
+            <article class="hc-footer-post">
+
+                <a
+                    class="hc-footer-post-img"
+                    href="<?php echo esc_url( get_permalink() ); ?>"
+                    aria-label="<?php echo esc_attr( get_the_title() ); ?>"
+                >
+
+                    <?php if ( has_post_thumbnail() ) : ?>
+
+                        <?php
+                        the_post_thumbnail(
+                            'thumbnail',
+                            array(
+                                'alt'     => esc_attr( get_the_title() ),
+                                'loading' => 'lazy',
+                            )
+                        );
+                        ?>
+
+                    <?php endif; ?>
+
+                </a>
+
+
+                <div class="hc-footer-post-info">
+
+                    <a href="<?php echo esc_url( get_permalink() ); ?>">
+                        <?php echo esc_html( get_the_title() ); ?>
+                    </a>
+
+                </div>
+
+            </article>
+
+        <?php endwhile; ?>
+
+    </div>
+
+    <?php
+
+    wp_reset_postdata();
+
+    return ob_get_clean();
+}
+
+add_shortcode(
+    'hc_ultimas_entradas_footer',
+    'hc_footer_ultimas_entradas_shortcode'
+);

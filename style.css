@@ -2450,97 +2450,10 @@ body.single-post
     }
 }
 
-/* ==========================================================
-   FOOTER - FRANJA LEGAL A ANCHO COMPLETO
-========================================================== */
-
-.hc-footer-legal {
-    position: relative;
-    width: 100% !important;
-    max-width: none !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-}
 
 
-/* ==========================================================
-   FOOTER - GRID RESPONSIVE MÓVIL
-========================================================== */
-
-@media (max-width: 767px) {
-
-    .hc-footer-contenido {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) !important;
-
-        width: 100% !important;
-        max-width: none !important;
-
-        row-gap: 48px !important;
-
-        padding-left: 25px !important;
-        padding-right: 25px !important;
-    }
-
-    .hc-footer-columna {
-        width: 100% !important;
-        max-width: none !important;
-
-        justify-self: stretch !important;
-        align-self: stretch !important;
-    }
-}
 
 
-    /* ==========================================================
-   FOOTER - FRANJA LEGAL EN MÓVIL
-========================================================== */
-
-@media (max-width: 767px) {
-
-    .hc-footer-legal {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-
-        gap: 10px !important;
-
-        padding: 18px 22px 22px !important;
-
-        text-align: center !important;
-    }
-
-    .hc-footer-legal p {
-        margin: 0 !important;
-
-        font-size: 12px !important;
-        line-height: 1.45 !important;
-    }
-}
-
-/* ==========================================================
-   FOOTER - TABLET
-========================================================== */
-
-@media (min-width: 768px) and (max-width: 1024px) {
-
-    /* Contacto necesita más espacio que Horizonte Camper */
-    .hc-footer-grid {
-        grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-
-        /* Las filas ocupan solo lo que necesita su contenido */
-        grid-template-rows: auto auto !important;
-        grid-auto-rows: auto !important;
-        align-content: start !important;
-    }
-
-    /* Servicios ocupa toda la segunda fila */
-    .footer-servicios {
-        grid-column: 1 / -1;
-    }
-
-}
 
 
 /* ==========================================================
@@ -3320,4 +3233,152 @@ body.single-post
     .hc-configurador-aside .hc-servicios-aside-sticky {
         position: static !important;
     }
+}
+
+
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.hc-footer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.hc-footer-links li {
+    margin-bottom: 0px;
+}
+
+.hc-footer-links a {
+    color: #000000;
+    text-decoration: none;
+    transition: color .3s ease;
+    font-size: 8px;
+}
+
+.hc-footer-links a:hover {
+    color: #D96B43;
+}
+
+
+/* ==========================================================
+   FOOTER - ÚLTIMAS ENTRADAS
+========================================================== */
+
+.hc-footer-posts {
+    width: 100%;
+}
+
+.hc-footer-post {
+    display: grid;
+    grid-template-columns: 70px minmax(0, 1fr);
+    gap: 14px;
+    align-items: center;
+
+    width: 100%;
+    padding: 12px 0;
+
+    border-bottom: 1px solid rgba(53, 92, 109, .18);
+}
+
+.hc-footer-post:last-child {
+    border-bottom: 0;
+}
+
+.hc-footer-post-img {
+    display: block;
+    width: 70px;
+    height: 55px;
+    overflow: hidden;
+}
+
+.hc-footer-post-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: transform .4s ease;
+}
+
+.hc-footer-post:hover img {
+    transform: scale(1.05);
+}
+
+.hc-footer-post-info {
+    min-width: 0;
+}
+
+.hc-footer-post-info a {
+    display: block;
+
+    font-size: 10px;
+    line-height: 1.4;
+
+    color: #355C6D;
+    text-decoration: none;
+
+    transition: color .3s ease;
+}
+
+.hc-footer-post-info a:hover {
+    color: var(--color-secundario);
+}
+
+
+
+
+
+.hc-footer-legal,
+.hc-footer-legal span,
+.hc-footer-legal a,
+.hc-footer-autor {
+    color: #FFFFFF;
+}
+
+.hc-footer-legal a:hover {
+    color: var(--color-secundario);
+}
+
+
+/* ==========================================================
+   FOOTER - FRANJA LEGAL
+========================================================== */
+
+.hc-footer-legal-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    width: 100%;
+}
+
+.hc-footer-legal,
+.hc-footer-autor {
+    font-size: 12px;
+    line-height: 1.4;
+    color: #FFFFFF !important;
+}
+
+.hc-footer-legal a,
+.hc-footer-autor a {
+    color: #FFFFFF !important;
+    text-decoration: none;
+}
+
+.hc-footer-legal a:hover {
+    color: var(--color-secundario) !important;
+}
+
+@media (max-width: 767px) {
+
+    .hc-footer-legal-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
 }
