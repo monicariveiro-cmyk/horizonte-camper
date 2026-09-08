@@ -2793,7 +2793,6 @@ body.single-post
     padding: 4px 8px !important;
 
     background: #f5f1e8 !important;
-    
 
     font-family: var(--font-primary) !important;
     font-size: 13px !important;
@@ -2805,8 +2804,8 @@ body.single-post
     cursor: pointer;
 
     transition:
-    background-color .3s ease,
-    color .3s ease;
+        background-color .3s ease,
+        color .3s ease;
 }
 
 .hc-servicio-flecha {
@@ -2825,7 +2824,6 @@ body.single-post
 .hc-servicio-contenido {
     display: grid;
     grid-template-rows: 0fr;
-
     opacity: 0;
 
     transition:
@@ -2833,9 +2831,13 @@ body.single-post
         opacity .3s ease;
 }
 
-.hc-servicio-contenido > p {
+/* Contenedor interior del desplegable */
+.hc-servicio-contenido-inner {
     overflow: hidden;
+    min-height: 0;
+}
 
+.hc-servicio-contenido-inner > p {
     margin: 0;
 
     font-size: 15px;
@@ -3381,4 +3383,29 @@ body.single-post
         gap: 8px;
     }
 
+}
+
+
+/* ==========================================================
+   RESPONSIVE-MOVIL - MARQUESINA CONTENEDOR
+========================================================== */
+
+@media (max-width: 767px) {
+
+    .hc-marcas-marquesina {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        padding: 14px 0;
+    }
+
+    .hc-marcas-grupo {
+        gap: 28px;
+    }
+
+    .hc-marcas-grupo img {
+        height: 22px !important;
+        max-height: 22px !important;
+        max-width: 95px !important;
+    }
 }
