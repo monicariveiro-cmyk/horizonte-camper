@@ -16,3 +16,4 @@ Thumbs.db
 
 # Dependencias, si en el futuro usamos Node
 node_modules/
+/vendor/
