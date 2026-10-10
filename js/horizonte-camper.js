@@ -1400,3 +1400,32 @@ document.addEventListener('click', function (event) {
     }
 
 });
+
+
+/* ==========================================================
+   FAQ · ACORDEÓN
+========================================================== */
+
+document.addEventListener("click", function (event) {
+
+    const boton = event.target.closest(".hc-faq-pregunta");
+
+    if (!boton) {
+        return;
+    }
+
+    const item = boton.closest(".hc-faq-item");
+
+    if (!item) {
+        return;
+    }
+
+    const abierto = item.classList.toggle("activo");
+
+    boton.setAttribute(
+        "aria-expanded",
+        abierto ? "true" : "false"
+    );
+
+});
+

@@ -4494,3 +4494,1682 @@ body.single-post
 }
 
 
+/* =========================================================
+   ALQUILER · RESERVA · MÓVIL
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .hc-reserva {
+        padding: 50px 16px;
+    }
+
+    .hc-reserva-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .hc-reserva-calendario {
+        max-width: 100%;
+        width: 100%;
+        padding: 18px 14px;
+    }
+
+    .hc-calendario-cabecera {
+        gap: 10px;
+    }
+
+    .hc-calendario-mes {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .hc-calendario-semana {
+        font-size: 0.72rem;
+        gap: 4px;
+    }
+
+    .hc-calendario-dias {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 4px;
+    width: 100%;
+}
+
+    .hc-calendario-dia {
+    width: 100%;
+    min-width: 0;
+    min-height: 36px;
+    padding: 4px;
+    font-size: 0.78rem;
+}
+
+    .hc-calendario-nav {
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+        padding: 0;
+    }
+
+    .hc-calendario-leyenda {
+        gap: 10px;
+        font-size: 0.72rem;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .hc-reserva-bloque {
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hc-reserva-calendario,
+    .hc-reserva-vehiculo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hc-tarifas-selector {
+    width: 100%;
+    align-items: center;
+}
+
+.hc-temporada-btn {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+}
+
+
+/* =========================================================
+   ALQUILER · RESERVA · TABLET
+   ========================================================= */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .hc-reserva {
+        padding: 70px 32px;
+    }
+
+    .hc-reserva-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .hc-reserva-vehiculos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .hc-reserva-calendario {
+        max-width: 720px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .hc-reserva-resumen {
+        max-width: 720px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+
+    /* Botones flotantes */
+
+    .whatsapp-flotante {
+        right: 49px !important;
+    }
+
+    #volver-arriba {
+        right: 50px !important;
+    }
+
+}
+
+/* ==========================================================
+   FAQ · SECCIÓN GENERAL
+========================================================== */
+
+.hc-faq-seccion {
+    width: 100%;
+    padding: 80px 5%;
+
+    background: #355C6D;
+}
+
+
+/* ==========================================================
+   FAQ · DOS COLUMNAS
+========================================================== */
+
+.hc-faq-columnas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 150px;
+
+    max-width: 1200px;
+    margin: 0 auto;
+
+    align-items: start;
+}
+
+
+/* ==========================================================
+   FAQ · CABECERAS DE CADA BLOQUE
+========================================================== */
+
+.hc-faq-bloque {
+    width: 100%;
+}
+
+.hc-faq-eyebrow {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+
+    color: var(--color-secundario);
+}
+
+.hc-faq-bloque h2 {
+    margin: 0 0 30px;
+
+    font-family: var(--font-primary);
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 600;
+    line-height: 1.15;
+
+    color: #FFFFFF;
+}
+
+
+/* ==========================================================
+   FAQ · CADA PREGUNTA
+========================================================== */
+
+.hc-faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.hc-faq-pregunta {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 0;
+
+    border: 0;
+    background: transparent;
+
+    font-family: var(--font-primary);
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: left;
+
+    color: #FFFFFF;
+
+    cursor: pointer;
+}
+
+
+/* ==========================================================
+   FAQ · FLECHA
+========================================================== */
+
+.hc-faq-flecha {
+    flex: 0 0 auto;
+
+    font-size: 20px;
+    line-height: 1;
+
+    color: var(--color-secundario);
+
+    transition: transform .35s ease;
+}
+
+
+/* ==========================================================
+   FAQ · RESPUESTA
+========================================================== */
+
+.hc-faq-respuesta {
+    display: grid;
+    grid-template-rows: 0fr;
+
+    opacity: 0;
+
+    transition:
+        grid-template-rows .4s cubic-bezier(.22, 1, .36, 1),
+        opacity .3s ease;
+}
+
+.hc-faq-respuesta-inner {
+    overflow: hidden;
+}
+
+.hc-faq-respuesta-inner p {
+    margin: 0;
+    padding: 0 0 22px;
+
+    font-size: 15px;
+    line-height: 1.7;
+
+    color: rgba(255, 255, 255, 0.82);
+}
+
+
+/* ==========================================================
+   FAQ · ESTADO ABIERTO
+========================================================== */
+
+.hc-faq-item.activo .hc-faq-respuesta {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.hc-faq-item.activo .hc-faq-flecha {
+    transform: rotate(180deg);
+}
+
+/* ==========================================================
+   FAQ · TABLET
+========================================================== */
+
+@media (max-width: 1024px) {
+
+    .hc-faq-seccion {
+        padding: 65px 32px;
+    }
+
+    .hc-faq-columnas {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 60px;
+
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hc-faq-bloque,
+    .hc-faq-item,
+    .hc-faq-pregunta,
+    .hc-faq-respuesta,
+    .hc-faq-respuesta-inner {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .hc-faq-pregunta > span:first-child {
+        min-width: 0;
+        white-space: normal;
+        overflow-wrap: break-word;
+    }
+}
+
+
+/* ==========================================================
+   FAQ · MÓVIL
+========================================================== */
+
+@media (max-width: 767px) {
+
+    .hc-faq-seccion {
+        padding: 50px 20px;
+    }
+
+    .hc-faq-columnas {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 50px;
+
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .hc-faq-bloque {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .hc-faq-bloque h2 {
+        width: 100%;
+        max-width: 100%;
+
+        margin-bottom: 24px;
+
+        font-size: 30px;
+        line-height: 1.15;
+
+        white-space: normal;
+        overflow-wrap: break-word;
+    }
+
+    .hc-faq-item {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .hc-faq-pregunta {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+
+        padding: 17px 0;
+
+        font-size: 16px;
+        line-height: 1.4;
+
+        white-space: normal;
+    }
+
+    .hc-faq-pregunta > span:first-child {
+        min-width: 0;
+        white-space: normal;
+        overflow-wrap: break-word;
+    }
+
+    .hc-faq-flecha {
+        flex: 0 0 auto;
+    }
+
+    .hc-faq-respuesta,
+    .hc-faq-respuesta-inner {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .hc-faq-respuesta-inner p {
+        font-size: 14px;
+        line-height: 1.65;
+        padding-bottom: 20px;
+    }
+}
+
+
+
+/* ==========================================================
+   WOOCOMMERCE · FICHA DE PRODUCTO
+   IDENTIDAD HORIZONTE CAMPER
+========================================================== */
+
+/* Precio */
+.single-product .price,
+.single-product .price .amount {
+    color: #D96B43 !important;
+    font-weight: 600;
+}
+
+/* Botón añadir al carrito */
+.single-product button.single_add_to_cart_button {
+    background: #0F4C5C !important;
+    color: #FFFFFF !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    padding: 13px 22px !important;
+
+    font-family: var(--font-primary);
+    font-weight: 600;
+
+    transition:
+        background .3s ease,
+        transform .3s ease;
+}
+
+.single-product button.single_add_to_cart_button:hover {
+    background: #D96B43 !important;
+    color: #FFFFFF !important;
+
+    transform: translateY(-2px);
+}
+
+
+/* Selector de cantidad */
+.single-product .quantity .qty {
+    border: 1px solid rgba(15, 76, 92, .25);
+
+    min-height: 42px;
+
+    color: #222;
+    background: #FFFFFF;
+}
+
+
+/* Categoría y enlaces */
+.single-product .product_meta a {
+    color: #0F4C5C;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.single-product .product_meta a:hover {
+    color: #D96B43;
+}
+
+
+/* Título del producto */
+.single-product .product_title {
+    color: #222222;
+
+    font-family: var(--font-primary);
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+
+/* Descripción corta */
+.single-product .woocommerce-product-details__short-description {
+    color: #444;
+    line-height: 1.7;
+}
+
+
+/* Pestañas Descripción / Información adicional */
+.single-product .woocommerce-tabs ul.tabs {
+    border-bottom: 1px solid rgba(15, 76, 92, .18);
+}
+
+.single-product .woocommerce-tabs ul.tabs li {
+    border: 0 !important;
+    background: transparent !important;
+}
+
+.single-product .woocommerce-tabs ul.tabs li a {
+    color: #355C6D !important;
+    font-weight: 500;
+}
+
+.single-product .woocommerce-tabs ul.tabs li.active a {
+    color: #D96B43 !important;
+}
+
+
+/* Contenido de las pestañas */
+.single-product .woocommerce-Tabs-panel {
+    color: #333;
+    line-height: 1.7;
+}
+
+.single-product .woocommerce-Tabs-panel h2,
+.single-product .woocommerce-Tabs-panel h3 {
+    color: #222;
+    font-family: var(--font-primary);
+}
+
+
+/* Breadcrumb */
+.single-product .woocommerce-breadcrumb {
+    color: rgba(34, 34, 34, .55);
+    font-size: 13px;
+}
+
+.single-product .woocommerce-breadcrumb a {
+    color: #355C6D;
+}
+
+.single-product .woocommerce-breadcrumb a:hover {
+    color: #D96B43;
+}
+
+
+/* ==========================================================
+   WOOCOMMERCE · SELECTOR DE CANTIDAD
+========================================================== */
+
+/* ==========================================================
+   WOOCOMMERCE · CANTIDAD
+========================================================== */
+
+.single-product .quantity .qty {
+    width: 64px !important;
+    height: 49px;
+
+    padding: 0 20px 0 8px !important;
+
+    text-align: center;
+
+    border: 1px solid rgba(15, 76, 92, .25) !important;
+    border-radius: 0 !important;
+
+    background: #FFFFFF !important;
+    color: #222222;
+
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+/* ==========================================================
+   WOOCOMMERCE · GALERÍA DE PRODUCTO
+========================================================== */
+
+.single-product .woocommerce-product-gallery {
+    margin-bottom: 40px;
+}
+
+/* Imagen principal */
+.single-product .woocommerce-product-gallery__wrapper {
+    margin-bottom: 14px;
+}
+
+/* Miniaturas */
+.single-product .flex-control-thumbs {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Cada miniatura */
+.single-product .flex-control-thumbs li {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+/* Imagen de miniatura */
+.single-product .flex-control-thumbs img {
+    display: block;
+
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+
+    border: 1px solid rgba(15, 76, 92, .12);
+
+    opacity: .75;
+
+    transition:
+        opacity .25s ease,
+        border-color .25s ease,
+        transform .25s ease;
+}
+
+/* Hover */
+.single-product .flex-control-thumbs img:hover {
+    opacity: 1;
+    border-color: #D96B43;
+    transform: translateY(-2px);
+}
+
+/* Miniatura activa */
+.single-product .flex-control-thumbs img.flex-active {
+    opacity: 1;
+    border-color: #0F4C5C;
+}
+
+.single-product .flex-control-thumbs {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+}
+
+
+/* ==========================================================
+   WOOCOMMERCE · PESTAÑAS DE PRODUCTO
+========================================================== */
+
+.single-product .woocommerce-tabs {
+    margin-top: 55px;
+}
+
+/* Contenedor de pestañas */
+.single-product .woocommerce-tabs ul.tabs {
+    display: flex;
+    gap: 30px;
+
+    margin: 0 0 30px !important;
+    padding: 0 !important;
+
+    border-bottom: 1px solid rgba(15, 76, 92, .18);
+}
+
+/* Cada pestaña */
+.single-product .woocommerce-tabs ul.tabs li {
+    position: relative;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Quitar decoraciones por defecto de WooCommerce */
+.single-product .woocommerce-tabs ul.tabs li::before,
+.single-product .woocommerce-tabs ul.tabs li::after {
+    display: none !important;
+}
+
+/* Enlace de pestaña */
+.single-product .woocommerce-tabs ul.tabs li a {
+    display: block;
+
+    padding: 0 0 12px !important;
+
+    color: #355C6D !important;
+
+    font-family: var(--font-primary);
+    font-size: 15px;
+    font-weight: 500;
+
+    text-decoration: none;
+}
+
+/* Pestaña activa */
+.single-product .woocommerce-tabs ul.tabs li.active a {
+    color: #222222 !important;
+    font-weight: 600;
+}
+
+/* Quitar definitivamente la decoración de WooCommerce */
+.single-product .woocommerce-tabs ul.tabs li::before,
+.single-product .woocommerce-tabs ul.tabs li::after {
+    display: none !important;
+    content: none !important;
+    box-shadow: none !important;
+}
+
+/* Subrayado de la pestaña activa */
+.single-product .woocommerce-tabs ul.tabs li.active a {
+    color: #222222 !important;
+    font-weight: 600;
+
+    border-bottom: 3px solid #D96B43;
+}
+
+/* Hover */
+.single-product .woocommerce-tabs ul.tabs li a:hover {
+    color: #D96B43 !important;
+}
+
+
+/* ==========================================================
+   CONTENIDO DE LAS PESTAÑAS
+========================================================== */
+
+.single-product .woocommerce-Tabs-panel {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    color: #333333;
+    line-height: 1.7;
+}
+
+.single-product .woocommerce-Tabs-panel h2 {
+    margin: 0 0 20px;
+
+    font-family: var(--font-primary);
+    font-size: 28px;
+    font-weight: 600;
+
+    color: #222222;
+}
+
+.single-product .woocommerce-Tabs-panel h3 {
+    margin-top: 28px;
+
+    font-family: var(--font-primary);
+    font-size: 22px;
+    font-weight: 600;
+
+    color: #355C6D;
+}
+
+
+/* ==========================================================
+   WOOCOMMERCE · INFORMACIÓN ADICIONAL / ATRIBUTOS
+========================================================== */
+
+.single-product .woocommerce-product-attributes {
+    width: 100%;
+    margin-top: 20px;
+
+    border-collapse: collapse;
+    border: 0;
+    background: transparent;
+}
+
+/* Filas */
+.single-product .woocommerce-product-attributes tr {
+    border-bottom: 1px solid rgba(15, 76, 92, .12);
+}
+
+/* Nombre del atributo */
+.single-product .woocommerce-product-attributes-item__label {
+    width: 180px;
+
+    padding: 14px 18px !important;
+
+    background: rgba(15, 76, 92, .05);
+
+    color: #0F4C5C;
+
+    font-family: var(--font-primary);
+    font-weight: 600;
+    text-align: left;
+}
+
+/* Valor */
+.single-product .woocommerce-product-attributes-item__value {
+    padding: 14px 18px !important;
+
+    background: transparent;
+
+    color: #333333;
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Quitar bordes gruesos heredados */
+.single-product .woocommerce-product-attributes th,
+.single-product .woocommerce-product-attributes td {
+    border: 0 !important;
+}
+
+/* Quitar márgenes internos raros de párrafos */
+.single-product .woocommerce-product-attributes-item__value p {
+    margin: 0;
+}
+
+
+/* ==========================================================
+   WOOCOMMERCE · FICHA DE PRODUCTO · RESPONSIVE MÓVIL
+========================================================== */
+
+@media (max-width: 767px) {
+
+    /* Contenedor general */
+    .single-product .site-main,
+    .single-product .content-area {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Imagen + resumen pasan a una sola columna */
+    .single-product div.product {
+        display: block;
+    }
+
+    .single-product div.product div.images,
+    .single-product div.product div.summary {
+        width: 100% !important;
+        float: none !important;
+        margin: 0 !important;
+    }
+
+    /* Espacio entre galería y resumen */
+    .single-product div.product div.images {
+        margin-bottom: 30px !important;
+    }
+
+    /* Título */
+    .single-product .product_title {
+        font-size: 20px !important;
+        line-height: 1.05;
+        margin-bottom: 16px !important;
+    }
+
+    /* Precio */
+    .single-product .price {
+        margin-bottom: 18px !important;
+    }
+
+    /* Descripción corta */
+    .single-product .woocommerce-product-details__short-description {
+        font-size: 14px;
+        line-height: 1.65;
+    }
+
+    /* Cantidad + botón */
+    .single-product form.cart {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .single-product .quantity {
+        margin: 0 !important;
+    }
+
+    .single-product button.single_add_to_cart_button {
+        min-height: 49px;
+        margin: 0 !important;
+    }
+
+    /* Miniaturas */
+    .single-product .flex-control-thumbs {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 7px;
+    }
+
+    /* Pestañas */
+    .single-product .woocommerce-tabs {
+        margin-top: 40px;
+    }
+
+    .single-product .woocommerce-tabs ul.tabs {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .single-product .woocommerce-tabs ul.tabs li a {
+        font-size: 14px;
+    }
+
+    /* Contenido */
+    .single-product .woocommerce-Tabs-panel h2 {
+        font-size: 25px;
+    }
+
+    .single-product .woocommerce-Tabs-panel h3 {
+        font-size: 20px;
+    }
+
+    .single-product .woocommerce-Tabs-panel,
+    .single-product .woocommerce-Tabs-panel p,
+    .single-product .woocommerce-Tabs-panel li {
+        font-size: 14px;
+        line-height: 1.65;
+    }
+
+    /* Tabla de información adicional */
+    .single-product .woocommerce-product-attributes-item__label,
+    .single-product .woocommerce-product-attributes-item__value {
+        padding: 12px 10px !important;
+    }
+
+    .single-product .woocommerce-product-attributes-item__label {
+        width: 120px;
+    }
+}
+
+
+/* ==========================================================
+   WOOCOMMERCE · FICHA DE PRODUCTO · TABLET
+========================================================== */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    /* Imagen + resumen */
+    .single-product div.product {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 36px;
+        align-items: start;
+    }
+
+    .single-product div.product div.images,
+    .single-product div.product div.summary {
+        width: 100% !important;
+        float: none !important;
+        margin: 0 !important;
+        min-width: 0;
+    }
+
+    /* Título */
+    .single-product .product_title {
+        font-size: 26px !important;
+        line-height: 1.08;
+        margin-bottom: 16px !important;
+    }
+
+    /* Descripción corta */
+    .single-product .woocommerce-product-details__short-description {
+        font-size: 15px;
+        line-height: 1.65;
+    }
+
+    /* Cantidad + botón */
+    .single-product form.cart {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    /* Miniaturas */
+    .single-product .flex-control-thumbs {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    /* Pestañas a ancho completo debajo */
+    .single-product .woocommerce-tabs {
+        grid-column: 1 / -1;
+        margin-top: 45px;
+    }
+
+    .single-product .woocommerce-tabs ul.tabs {
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+
+    /* Contenido */
+    .single-product .woocommerce-Tabs-panel h2 {
+        font-size: 27px;
+    }
+
+    .single-product .woocommerce-Tabs-panel h3 {
+        font-size: 21px;
+    }
+
+    /* Tabla de atributos */
+    .single-product .woocommerce-product-attributes-item__label {
+        width: 160px;
+    }
+}
+
+/* ==========================================================
+   WOOCOMMERCE · PÁGINA ACCESORIOS CAMPER
+   TIENDA + CATEGORÍAS
+========================================================== */
+
+/* Título principal */
+:is(.woocommerce-shop, .tax-product_cat) .woocommerce-products-header__title {
+    color: #222222;
+    font-family: var(--font-primary);
+    font-weight: 600;
+}
+
+
+/* Contador de resultados */
+:is(.woocommerce-shop, .tax-product_cat) .woocommerce-result-count {
+    color: #555555;
+}
+
+
+/* Selector de orden */
+:is(.woocommerce-shop, .tax-product_cat) .woocommerce-ordering select {
+    min-height: 46px;
+
+    padding: 0 40px 0 14px;
+
+    border: 1px solid rgba(15, 76, 92, .22);
+    border-radius: 0;
+
+    background: #FFFFFF;
+
+    color: #222222;
+
+    font-family: var(--font-primary);
+    font-size: 14px;
+}
+
+
+/* Rejilla */
+:is(.woocommerce-shop, .tax-product_cat) ul.products {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 50px 28px;
+
+    margin-top: 45px !important;
+}
+
+
+/* Producto */
+:is(.woocommerce-shop, .tax-product_cat) ul.products li.product {
+    width: 100% !important;
+    margin: 0 !important;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Imagen */
+:is(.woocommerce-shop, .tax-product_cat) ul.products li.product img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    object-fit: contain;
+
+    margin-bottom: 20px !important;
+
+    transition: transform .3s ease;
+}
+
+
+/* Hover imagen */
+:is(.woocommerce-shop, .tax-product_cat) ul.products li.product:hover img {
+    transform: scale(1.03);
+}
+
+
+/* Nombre del producto */
+:is(.woocommerce-shop, .tax-product_cat) ul.products li.product .woocommerce-loop-product__title {
+    padding: 0 !important;
+    margin: 0 0 10px;
+
+    color: #222222 !important;
+
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+
+/* Precio */
+:is(.woocommerce-shop, .tax-product_cat) ul.products li.product .price {
+    margin-bottom: 16px !important;
+
+    color: #D96B43 !important;
+
+    font-size: 17px;
+    font-weight: 600;
+}
+
+
+/* Botón */
+:is(.woocommerce-shop, .tax-product_cat) ul.products li.product .button {
+    align-self: flex-start;
+
+    margin-top: auto !important;
+    padding: 12px 18px !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    background: #0F4C5C !important;
+    color: #FFFFFF !important;
+
+    font-family: var(--font-primary);
+    font-weight: 600;
+
+    transition:
+        background .3s ease,
+        transform .3s ease;
+}
+
+:is(.woocommerce-shop, .tax-product_cat) ul.products li.product .button:hover {
+    background: #D96B43 !important;
+    color: #FFFFFF !important;
+
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================================
+   WOOCOMMERCE · ACCESORIOS CAMPER
+   SIDEBAR + CATÁLOGO
+========================================================== */
+
+:is(.woocommerce-shop, .tax-product_cat) .hc-shop-layout {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 60px;
+
+    width: 100%;
+    margin-top: 35px;
+
+    align-items: start;
+}
+
+
+/* ==========================================================
+   SIDEBAR
+========================================================== */
+
+:is(.woocommerce-shop, .tax-product_cat) .hc-shop-sidebar {
+    width: 100%;
+    min-width: 0;
+}
+
+:is(.woocommerce-shop, .tax-product_cat) .hc-shop-sidebar-bloque {
+    margin-bottom: 32px;
+}
+
+:is(.woocommerce-shop, .tax-product_cat) .hc-shop-sidebar-bloque h2 {
+    position: relative;
+    margin: 0 0 18px;
+    padding-bottom: 10px;
+
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.2;
+
+    color: #222222;
+}
+
+:is(.woocommerce-shop, .tax-product_cat) .hc-shop-sidebar-bloque h2::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 36px;
+    height: 3px;
+
+    background: #D96B43;
+}
+
+
+/* ==========================================================
+   BUSCADOR
+========================================================== */
+
+:is(.woocommerce-shop, .tax-product_cat) .woocommerce-product-search {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+:is(.woocommerce-shop, .tax-product_cat) .woocommerce-product-search input[type="search"] {
+    width: 100%;
+    height: 46px;
+
+    padding: 0 14px;
+
+    border: 1px solid rgba(15, 76, 92, .22);
+    border-radius: 0;
+
+    background: #FFFFFF;
+    color: #222222;
+
+    font-family: var(--font-primary);
+    font-size: 14px;
+}
+
+:is(.woocommerce-shop, .tax-product_cat) .woocommerce-product-search input[type="search"]:focus {
+    border-color: #0F4C5C;
+    outline: 1px solid #0F4C5C;
+}
+
+:is(.woocommerce-shop, .tax-product_cat) .woocommerce-product-search button {
+    align-self: flex-start;
+
+    padding: 11px 18px;
+
+    border: 0;
+    border-radius: 0;
+
+    background: #0F4C5C;
+    color: #FFFFFF;
+
+    font-family: var(--font-primary);
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background .3s ease;
+}
+
+:is(.woocommerce-shop, .tax-product_cat) .woocommerce-product-search button:hover {
+    background: #D96B43;
+}
+
+
+/* ==========================================================
+   CATEGORÍAS
+========================================================== */
+
+:is(.woocommerce-shop, .tax-product_cat) .hc-shop-categorias {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+:is(.woocommerce-shop, .tax-product_cat) .hc-shop-categorias li {
+    margin: 0;
+
+    border-bottom: 1px solid rgba(15, 76, 92, .12);
+}
+
+:is(.woocommerce-shop, .tax-product_cat) .hc-shop-categorias a {
+    display: block;
+
+    padding: 12px 0;
+
+    color: #355C6D;
+    text-decoration: none;
+
+    font-family: var(--font-primary);
+    font-size: 15px;
+    font-weight: 500;
+
+    transition:
+        color .25s ease,
+        padding-left .25s ease;
+}
+
+:is(.woocommerce-shop, .tax-product_cat) .hc-shop-categorias a:hover {
+    padding-left: 6px;
+
+    color: #D96B43;
+}
+
+
+/* ==========================================================
+   ZONA PRINCIPAL DEL CATÁLOGO
+========================================================== */
+
+:is(.woocommerce-shop, .tax-product_cat) .hc-shop-main {
+    width: 100%;
+    min-width: 0;
+}
+
+
+/* ==========================================================
+   WOOCOMMERCE · ACCESORIOS CAMPER · TABLET
+========================================================== */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    /* Sidebar arriba + catálogo debajo */
+    :is(.woocommerce-shop, .tax-product_cat) .hc-shop-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 45px;
+    }
+
+    /* Sidebar */
+    :is(.woocommerce-shop, .tax-product_cat) .hc-shop-sidebar {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 40px;
+        align-items: start;
+    }
+
+    :is(.woocommerce-shop, .tax-product_cat) .hc-shop-sidebar-bloque {
+        margin-bottom: 0;
+    }
+
+    /* Productos */
+    :is(.woocommerce-shop, .tax-product_cat) ul.products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 45px 24px;
+    }
+
+    /* Si solo hay un producto, centrarlo */
+:is(.woocommerce-shop, .tax-product_cat)
+ul.products li.product:only-child {
+    max-width: 340px;
+    justify-self: center;
+    grid-column: 1 / -1;
+}
+
+    /* Títulos */
+    :is(.woocommerce-shop, .tax-product_cat) .woocommerce-products-header__title {
+        font-size: 32px;
+    }
+}
+
+
+/* ==========================================================
+   WOOCOMMERCE · ACCESORIOS CAMPER · MÓVIL
+========================================================== */
+
+@media (max-width: 767px) {
+
+    /* Layout general */
+    :is(.woocommerce-shop, .tax-product_cat) .hc-shop-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 35px;
+        margin-top: 25px;
+    }
+
+    /* Sidebar en una sola columna */
+    :is(.woocommerce-shop, .tax-product_cat) .hc-shop-sidebar {
+        display: block;
+    }
+
+    :is(.woocommerce-shop, .tax-product_cat) .hc-shop-sidebar-bloque {
+        margin-bottom: 30px;
+    }
+
+    /* Título de la categoría / tienda */
+    :is(.woocommerce-shop, .tax-product_cat) .woocommerce-products-header__title {
+        font-size: 28px;
+        line-height: 1.15;
+    }
+
+    /* Contador de resultados */
+    :is(.woocommerce-shop, .tax-product_cat) .woocommerce-result-count {
+        float: none;
+        width: 100%;
+        margin: 0 0 18px;
+    }
+
+    /* Ordenación */
+    :is(.woocommerce-shop, .tax-product_cat) .woocommerce-ordering {
+        float: none;
+        width: 100%;
+        margin: 0 0 30px;
+    }
+
+    :is(.woocommerce-shop, .tax-product_cat) .woocommerce-ordering select {
+        width: 100%;
+    }
+
+    /* Rejilla de productos */
+    :is(.woocommerce-shop, .tax-product_cat) ul.products {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 40px;
+        margin-top: 25px !important;
+    }
+
+    /* Cada producto */
+    :is(.woocommerce-shop, .tax-product_cat) ul.products li.product {
+        max-width: 100%;
+        width: 100% !important;
+    }
+
+    /* Imagen */
+    :is(.woocommerce-shop, .tax-product_cat) ul.products li.product img {
+        max-width: 320px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Nombre del producto */
+    :is(.woocommerce-shop, .tax-product_cat)
+    ul.products li.product .woocommerce-loop-product__title {
+        font-size: 17px;
+    }
+
+    /* Precio */
+    :is(.woocommerce-shop, .tax-product_cat)
+    ul.products li.product .price {
+        font-size: 16px;
+    }
+
+    /* Evitar espacio extra después del último bloque del sidebar */
+:is(.woocommerce-shop, .tax-product_cat)
+.hc-shop-sidebar-bloque:last-child {
+    margin-bottom: 0;
+}
+}
+
+/* ==========================================================
+   MENÚ PRINCIPAL · ACCESORIOS CAMPER
+   DESPLEGABLE ELEGANTE
+========================================================== */
+
+/* Contenedor del submenú */
+.menu-item-has-children > .sub-menu {
+    min-width: 235px;
+
+    padding: 8px 0;
+
+    background: #F8F5EF;
+
+    border-top: 3px solid #D96B43;
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+}
+
+
+/* Cada elemento */
+.menu-item-has-children > .sub-menu > li {
+    margin: 0;
+    border: 0;
+}
+
+
+/* Enlaces */
+.menu-item-has-children > .sub-menu > li > a {
+    display: block;
+
+    padding: 13px 18px;
+
+    color: #355C6D;
+
+    font-family: var(--font-primary);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.3;
+
+    text-decoration: none;
+
+    transition:
+        color .25s ease,
+        background .25s ease,
+        padding-left .25s ease;
+}
+
+
+/* Hover */
+.menu-item-has-children > .sub-menu > li > a:hover {
+    color: #D96B43;
+    background: rgba(217, 107, 67, .05);
+
+    padding-left: 22px;
+}
+
+
+/* ==========================================================
+   MENÚ PRINCIPAL · ACCESORIOS CAMPER
+   DESPLEGABLE CON BRÚJULA
+========================================================== */
+
+
+/* Contenedor del submenú */
+.menu-item-has-children > .sub-menu {
+    width: 285px !important;
+    min-width: 285px !important;
+
+    padding: 8px 0;
+
+    background: #F8F5EF;
+
+    border-top: 3px solid #D96B43;
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+}
+
+/* Cada elemento */
+.menu-item-has-children > .sub-menu > li {
+    display: block !important;
+
+    width: 100% !important;
+    margin: 0;
+
+    border: 0;
+}
+
+
+/* Enlace */
+.menu-item-has-children > .sub-menu > li > a {
+    position: relative;
+
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 13px 48px 13px 18px;
+
+    color: #355C6D;
+
+    font-family: var(--font-primary);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.3;
+
+    text-align: left;
+    text-decoration: none;
+
+    transition:
+        color .3s ease,
+        background .3s ease,
+        padding .6s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* Quitar la línea animada del menú principal */
+.menu-item-has-children > .sub-menu > li > a::after {
+    display: none !important;
+    content: none !important;
+}
+
+
+/* ==========================================================
+   BRÚJULA
+========================================================== */
+
+.menu-item-has-children > .sub-menu > li > a::before {
+    content: "";
+
+    position: absolute;
+
+    right: 18px;
+    top: 50%;
+
+    width: 19px;
+    height: 19px;
+
+    background-image: var(--imagen-brujula);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    transform:
+        translateY(-50%)
+        rotate(0deg);
+
+    transition:
+        right .7s cubic-bezier(.22, 1, .36, 1),
+        transform .7s cubic-bezier(.22, 1, .36, 1);
+
+    pointer-events: none;
+}
+
+
+/* ==========================================================
+   HOVER
+========================================================== */
+
+.menu-item-has-children > .sub-menu > li > a:hover {
+    color: #D96B43;
+
+    background: rgba(217, 107, 67, .05);
+
+    /* deja sitio a la brújula en el lado izquierdo */
+    padding-left: 48px;
+    padding-right: 18px;
+}
+
+
+/* La brújula rueda desde la derecha hasta la izquierda */
+.menu-item-has-children > .sub-menu > li > a:hover::before {
+    right: calc(100% - 38px);
+
+    transform:
+        translateY(-50%)
+        rotate(-720deg);
+}
+
+
+/* ==========================================================
+   MENÚ ACCESORIOS CAMPER · TABLET Y MÓVIL
+========================================================== */
+
+@media (max-width: 1024px) {
+
+    /* ======================================================
+       SUBMENÚ DE ACCESORIOS CAMPER
+    ====================================================== */
+
+    .menu-item-has-children > .sub-menu {
+        position: static !important;
+
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        background: #F8F5EF;
+
+        border-top: 2px solid #D96B43;
+
+        box-shadow: none !important;
+
+        overflow: visible !important;
+    }
+
+
+    /* ======================================================
+       CADA CATEGORÍA
+    ====================================================== */
+
+    .menu-item-has-children > .sub-menu > li {
+        display: block !important;
+
+        width: 100% !important;
+
+        margin: 0 !important;
+    }
+
+
+    /* ======================================================
+       ENLACES DE CATEGORÍA
+    ====================================================== */
+
+    .menu-item-has-children > .sub-menu > li > a {
+        width: 100% !important;
+
+        padding: 14px 45px 14px 24px !important;
+
+        text-align: left;
+
+        box-sizing: border-box;
+    }
+
+
+    /* ======================================================
+       BRÚJULA · TABLET Y MÓVIL
+       Mantenerla a la derecha y desactivar el recorrido hover
+    ====================================================== */
+
+    .menu-item-has-children > .sub-menu > li > a::before,
+    .menu-item-has-children > .sub-menu > li > a:hover::before {
+        right: 18px !important;
+        left: auto !important;
+
+        transform:
+            translateY(-50%)
+            rotate(0deg) !important;
+
+        transition: none !important;
+    }
+
+
+    /* El texto tampoco cambia de posición al tocar */
+    .menu-item-has-children > .sub-menu > li > a:hover {
+        padding: 14px 45px 14px 24px !important;
+    }
+
+}

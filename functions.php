@@ -2174,3 +2174,568 @@ add_action(
     'hc_procesar_reserva'
 );
 
+/* ==========================================================
+   HORIZONTE CAMPER · SCHEMA FAQ
+   Página: Preguntas frecuentes
+========================================================== */
+
+function hc_schema_faq_page() {
+
+    // Solo cargar este schema en la página FAQ.
+    if ( ! is_page( 'preguntas-frecuentes-camperizacion-alquiler' ) ) {
+        return;
+    }
+
+    $faq = array(
+
+        /* ==================================================
+           CAMPERIZACIÓN
+        ================================================== */
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Qué tipo de furgonetas camperizáis?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Trabajamos con diferentes modelos y tamaños de furgoneta, desde vehículos compactos hasta grandes volúmenes. Antes de comenzar estudiamos el vehículo, el uso que quieres darle y las necesidades de cada viaje para plantear una distribución y un equipamiento adecuados.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Puedo camperizar una furgoneta que ya tengo?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Sí. Podemos trabajar sobre una furgoneta que ya tengas siempre que su estado y características permitan realizar el proyecto con seguridad. Antes de comenzar revisamos el vehículo y valoramos contigo qué soluciones encajan mejor.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿También vendéis furgonetas ya camperizadas?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Sí. Además de camperizar vehículos de clientes, podemos disponer de proyectos propios ya preparados o en proceso de construcción. La disponibilidad puede variar, por lo que conviene consultar los modelos disponibles en cada momento.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Puedo elegir la distribución interior?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Sí. La distribución se diseña teniendo en cuenta el número de viajeros, el tipo de viajes que haces, tus prioridades de descanso, cocina, almacenaje o baño y las posibilidades reales del vehículo.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Qué nivel de personalización puedo tener?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Cada proyecto puede adaptarse en distribución, acabados, materiales, iluminación, almacenaje y equipamiento. Nuestro objetivo es que el interior sea funcional y coherente con tu forma de viajar.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Qué instalaciones y equipamientos puedo añadir?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Podemos integrar soluciones de energía, agua, climatización, cocina, almacenaje, iluminación y equipamiento exterior, entre otras. El proyecto se configura en función de tus necesidades y del espacio disponible.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Trabajáis con placas solares, baterías, calefacción y agua?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Sí. Diseñamos e instalamos sistemas de autonomía eléctrica, placas solares, baterías auxiliares, calefacción estacionaria, depósitos de agua, bombas, tomas y otros componentes habituales en una camper.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Qué materiales utilizáis en la camperización?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Seleccionamos materiales pensados para soportar el uso, las vibraciones y los cambios de temperatura propios de un vehículo. Buscamos equilibrio entre resistencia, peso, mantenimiento, estética y durabilidad.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿La camperización incluye la homologación?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Cuando el proyecto requiere homologación, se planifica teniendo en cuenta la normativa aplicable desde el principio. Te informamos de los elementos que deben legalizarse y coordinamos el proceso necesario para que la transformación quede correctamente documentada.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Cuánto tiempo tarda una camperización?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Depende del alcance del proyecto, del modelo de furgoneta y del equipamiento elegido. Antes de comenzar te indicamos una previsión de plazos adaptada al trabajo que vayamos a realizar.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Puedo hacer la camperización por fases?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Sí, siempre que el proyecto pueda dividirse de forma lógica y segura. Podemos plantear una primera fase esencial y dejar previstas futuras instalaciones para evitar rehacer trabajos más adelante.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Cómo se calcula el presupuesto?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'El presupuesto depende del vehículo, la distribución, los materiales, las instalaciones y el nivel de equipamiento. Por eso primero necesitamos conocer tu idea y tus prioridades antes de preparar una propuesta.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Hay un presupuesto inicial sin compromiso?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Sí. Puedes contarnos qué vehículo tienes y qué necesitas mediante nuestro configurador o formulario de contacto. Con esa información podemos hacer una primera valoración del proyecto antes de avanzar.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Puedo traer ideas, planos o referencias de otros proyectos?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Por supuesto. Fotografías, bocetos, planos o referencias nos ayudan a entender lo que buscas. Después valoramos qué ideas son viables en tu vehículo y cómo adaptarlas para que funcionen correctamente.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Trabajáis con clientes de fuera de Asturias?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Sí. Trabajamos con proyectos de distintos puntos de España. Podemos organizar contigo la entrega, el seguimiento del proyecto y la recogida del vehículo para que la distancia no sea un problema.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Qué ocurre si durante el proyecto quiero hacer cambios?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Si el estado del proyecto lo permite, podemos estudiar modificaciones. Antes de realizar cualquier cambio que afecte al precio, a los materiales o a los plazos, lo revisamos contigo.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Qué garantía tienen los trabajos realizados?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Los trabajos e instalaciones realizados cuentan con la garantía correspondiente según su naturaleza y la normativa aplicable. Los componentes instalados mantienen además las garantías ofrecidas por sus fabricantes.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Hacéis también instalaciones sueltas o mejoras sobre una camper ya hecha?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Sí. No es necesario realizar una camperización completa. Podemos estudiar instalaciones concretas, ampliaciones de autonomía, mejoras de confort o renovación de determinados elementos de una camper existente.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Puedo ver trabajos anteriores antes de decidirme?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Sí. En la web iremos mostrando algunos de nuestros últimos trabajos para que puedas conocer diferentes soluciones, distribuciones y acabados realizados en otros proyectos.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Cómo empiezo el proceso para camperizar mi furgoneta?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'El primer paso es contarnos qué vehículo tienes, cuántas personas viajarán y qué tipo de uso quieres darle. Puedes hacerlo desde nuestro configurador de camperización o mediante el formulario de contacto. A partir de ahí estudiamos contigo las posibilidades del proyecto.'
+            ),
+        ),
+
+
+        /* ==================================================
+           ALQUILER
+        ================================================== */
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Qué necesito para alquilar una camper?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Necesitarás presentar un documento de identidad válido y un permiso de conducir en vigor. Antes de confirmar la reserva revisamos contigo las condiciones aplicables y los datos de las personas que conducirán el vehículo.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Qué permiso de conducir necesito?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Para nuestras campers es suficiente el permiso de conducir B, siempre que esté vigente y cumpla los requisitos establecidos en las condiciones de alquiler.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Cómo se calculan los días de alquiler?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'El alquiler se calcula desde la fecha de recogida hasta la fecha de devolución seleccionadas durante la reserva. El precio final depende del número de días, el modelo elegido y la temporada correspondiente.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Cómo se confirma una reserva?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'La reserva queda confirmada cuando se completa el proceso de reserva y se abona la señal indicada. Después recibirás la confirmación y los datos necesarios para preparar la recogida.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Cuál es la política de cancelaciones?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Las condiciones de cancelación dependen de la antelación con la que se comunique la anulación. Antes de reservar podrás consultar las condiciones aplicables y los posibles importes reembolsables.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Puedo realizar cambios en mi reserva?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Sí, siempre que exista disponibilidad. Podemos estudiar cambios de fechas, vehículo u otros datos de la reserva y te informaremos si implican alguna modificación en el precio.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Hay que pagar una fianza?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Sí. La fianza se entrega antes de iniciar el viaje y se devuelve una vez revisado el vehículo tras su devolución, siempre que no existan daños, cargos pendientes o incumplimientos de las condiciones de alquiler.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Qué incluye el alquiler?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Cada camper se entrega equipada con los elementos necesarios para viajar y utilizar sus instalaciones. En la ficha de cada modelo puedes consultar su equipamiento y características concretas.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Se admiten mascotas?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Sí, disponemos de opciones pensadas para viajar con mascota. Es importante indicarlo al realizar la reserva para elegir el vehículo más adecuado y conocer las condiciones aplicables.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Cómo viajan los niños?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Los niños deben viajar siempre en una plaza homologada y utilizando el sistema de retención adecuado a su edad, altura y peso. Antes de reservar conviene comprobar las plazas disponibles en cada modelo.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Puedo salir de España con la camper?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Los viajes fuera de España deben comunicarse previamente. Dependiendo del destino pueden existir condiciones específicas relacionadas con el seguro, la asistencia o la documentación del vehículo.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Está el kilometraje limitado?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Las condiciones de kilometraje pueden variar según la duración del alquiler o el vehículo elegido. Antes de confirmar la reserva podrás consultar si existe algún límite y qué condiciones se aplican.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Cómo se entrega y cómo debe devolverse la camper?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'La camper se entrega revisada, limpia y preparada para comenzar el viaje. En la devolución deberá entregarse en las condiciones indicadas, incluyendo combustible, limpieza y estado de los depósitos según las condiciones del alquiler.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿El agua de la camper es potable?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'El agua de los depósitos está destinada principalmente al uso cotidiano de la camper. Para beber recomendamos utilizar agua embotellada o agua cuya potabilidad puedas garantizar.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Dónde puedo conseguir agua durante el viaje?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Puedes rellenar los depósitos en áreas de autocaravanas, campings y otros puntos habilitados para vehículos camper. Recomendamos utilizar siempre lugares autorizados y agua apta para este tipo de instalaciones.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Se puede fumar dentro de la camper?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'No. Para mantener los vehículos en buenas condiciones y garantizar el confort de todos los usuarios, no está permitido fumar en el interior de las campers.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Qué ocurre en caso de accidente, avería o daños?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Debes contactar con nosotros lo antes posible y seguir las indicaciones de asistencia y seguro facilitadas con el vehículo. No realices reparaciones por tu cuenta sin autorización salvo que sea necesario por una situación de emergencia.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Dónde se puede pernoctar con una camper?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Puedes utilizar campings, áreas de autocaravanas y otros lugares donde el estacionamiento o la pernocta estén permitidos. Conviene comprobar siempre la normativa del municipio o del lugar donde quieras pasar la noche.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Es obligatorio respetar la hora de recogida y devolución?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'Sí. Los horarios permiten organizar la revisión, limpieza y preparación de cada vehículo. Si prevés un retraso o necesitas modificar el horario, ponte en contacto con nosotros con la mayor antelación posible.'
+            ),
+        ),
+
+        array(
+            '@type' => 'Question',
+            'name'  => '¿Cuánto tiempo lleva la devolución de la camper?',
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => 'La devolución incluye una revisión básica del estado del vehículo, equipamiento, combustible y depósitos. Normalmente es un proceso breve, aunque puede llevar algo más de tiempo si es necesario revisar alguna incidencia.'
+            ),
+        ),
+
+    );
+
+    $schema = array(
+        '@context'   => 'https://schema.org',
+        '@type'      => 'FAQPage',
+        'mainEntity' => $faq,
+    );
+
+    echo '<script type="application/ld+json">';
+    echo wp_json_encode(
+        $schema,
+        JSON_UNESCAPED_UNICODE |
+        JSON_UNESCAPED_SLASHES |
+        JSON_PRETTY_PRINT
+    );
+    echo '</script>';
+}
+
+add_action( 'wp_head', 'hc_schema_faq_page' );
+
+
+/* ==========================================================
+   HORIZONTE CAMPER · SCHEMA SERVICE
+   Página: Alquiler de campers en Asturias
+========================================================== */
+
+function hc_schema_service_alquiler() {
+
+    if ( ! is_page( 'alquiler-de-campers-en-asturias' ) ) {
+        return;
+    }
+
+    $pagina_url = get_permalink();
+
+    $schema = array(
+        '@context' => 'https://schema.org',
+        '@type'    => 'Service',
+
+        '@id' => $pagina_url . '#service',
+
+        'name' => 'Alquiler de campers en Asturias',
+
+        'description' => 'Servicio de alquiler de campers en Asturias con diferentes modelos, consulta de disponibilidad y reserva online.',
+
+        'url' => $pagina_url,
+
+        'mainEntityOfPage' => array(
+            '@type' => 'WebPage',
+            '@id'   => $pagina_url,
+        ),
+
+        'serviceType' => 'Alquiler de campers',
+
+        'provider' => array(
+            '@type' => 'Organization',
+            'name'  => 'Horizonte Camper',
+            'url'   => home_url( '/' ),
+        ),
+
+        'areaServed' => array(
+            '@type' => 'AdministrativeArea',
+            'name'  => 'Asturias',
+        ),
+
+        'offers' => array(
+            '@type' => 'Offer',
+
+            'url' => $pagina_url,
+
+            'availability' => 'https://schema.org/InStock',
+
+            'description' => 'Alquiler de diferentes modelos de camper con consulta de disponibilidad, selección de fechas y reserva online.',
+        ),
+
+        'availableChannel' => array(
+            '@type' => 'ServiceChannel',
+
+            'serviceUrl' => $pagina_url,
+
+            'availableLanguage' => array(
+                '@type' => 'Language',
+                'name'  => 'Español',
+            ),
+        ),
+    );
+
+    echo '<script type="application/ld+json">';
+    echo wp_json_encode(
+        $schema,
+        JSON_UNESCAPED_UNICODE |
+        JSON_UNESCAPED_SLASHES |
+        JSON_PRETTY_PRINT
+    );
+    echo '</script>';
+}
+
+add_action( 'wp_head', 'hc_schema_service_alquiler' );
+
+
+/* ==========================================================
+   HORIZONTE CAMPER · SIDEBAR ACCESORIOS CAMPER
+========================================================== */
+
+function hc_accesorios_sidebar_inicio() {
+
+    if ( ! is_shop() && ! is_product_category() ) {
+    return;
+}
+
+    echo '<div class="hc-shop-layout">';
+
+        echo '<aside class="hc-shop-sidebar">';
+
+            echo '<div class="hc-shop-sidebar-bloque">';
+                echo '<h2>Buscar productos</h2>';
+                get_product_search_form();
+            echo '</div>';
+
+            echo '<div class="hc-shop-sidebar-bloque">';
+                echo '<h2>Categorías</h2>';
+
+                echo '<ul class="hc-shop-categorias">';
+
+                    $categorias = array(
+                        'cocina-y-menaje'       => 'Cocina y menaje',
+                        'agua-y-bano'           => 'Agua y baño',
+                        'organizacion'          => 'Organización',
+                        'exterior-y-camping'    => 'Exterior y camping',
+                        'confort-y-descanso'    => 'Confort y descanso',
+                    );
+
+                    foreach ( $categorias as $slug => $nombre ) {
+
+                        $categoria = get_term_by(
+                            'slug',
+                            $slug,
+                            'product_cat'
+                        );
+
+                        if ( $categoria && ! is_wp_error( $categoria ) ) {
+
+                            $url = get_term_link( $categoria );
+
+                            echo '<li>';
+                                echo '<a href="' . esc_url( $url ) . '">';
+                                    echo esc_html( $nombre );
+                                echo '</a>';
+                            echo '</li>';
+                        }
+                    }
+
+                echo '</ul>';
+
+            echo '</div>';
+
+        echo '</aside>';
+
+        echo '<div class="hc-shop-main">';
+}
+
+add_action(
+    'woocommerce_before_shop_loop',
+    'hc_accesorios_sidebar_inicio',
+    5
+);
+
+
+function hc_accesorios_sidebar_fin() {
+
+    if ( ! is_shop() && ! is_product_category() ) {
+    return;
+}
+
+        echo '</div>'; // .hc-shop-main
+    echo '</div>'; // .hc-shop-layout
+}
+
+add_action(
+    'woocommerce_after_shop_loop',
+    'hc_accesorios_sidebar_fin',
+    40
+);
