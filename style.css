@@ -6173,3 +6173,227 @@ ul.products li.product:only-child {
     }
 
 }
+
+
+/* HORIZONTE CAMPER — Colores del carrito */
+
+/* Nombre del producto */
+body.woocommerce-cart a.wc-block-components-product-name {
+    color: #0F4C5C;
+    text-decoration: none;
+}
+
+body.woocommerce-cart a.wc-block-components-product-name:hover {
+    color: #D96B43;
+    text-decoration: underline;
+}
+
+/* Botón Finalizar compra */
+body.woocommerce-cart a.wc-block-components-button {
+    background-color: #0F4C5C;
+    color: #FFFFFF;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+body.woocommerce-cart a.wc-block-components-button:hover {
+    background-color: #D96B43;
+    color: #222222;
+}
+
+body.woocommerce-cart a.wc-block-components-button:focus-visible {
+    outline: 2px solid #0F4C5C;
+    outline-offset: 4px;
+}
+
+/* Enlace Ver carrito tras añadir un producto */
+body.woocommerce a.added_to_cart.wc-forward {
+    color: #0F4C5C;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+}
+
+body.woocommerce a.added_to_cart.wc-forward:hover {
+    color: #D96B43;
+    text-decoration: underline;
+}
+
+/* HORIZONTE CAMPER — Enlaces en Pedido recibido */
+body.woocommerce-order-received .woocommerce-order a {
+    color: #0F4C5C;
+    text-decoration: none;
+}
+
+body.woocommerce-order-received .woocommerce-order a:hover {
+    color: #D96B43;
+    text-decoration: underline;
+}
+
+
+/* Horizonte Camper: productos relacionados */
+.single-product .related.products > h2 {
+    color: #0F4C5C;
+}
+
+.single-product .related.products .woocommerce-loop-product__title {
+    color: #0F4C5C;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.single-product .related.products a:hover .woocommerce-loop-product__title {
+    color: #D96B43;
+}
+
+.single-product .related.products .price {
+    color: #0F4C5C;
+    font-weight: 600;
+}
+
+.single-product .related.products a.button {
+    background: #0F4C5C;
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.single-product .related.products a.button:hover {
+    background: #D96B43;
+    color: #fff;
+}
+
+.single-product .related.products a.button:focus-visible {
+    outline: 2px solid #D96B43;
+    outline-offset: 3px;
+}
+
+.single-product .related.products a.added_to_cart {
+    display: inline-block;
+    margin-top: 10px;
+    color: #0F4C5C;
+    font-weight: 600;
+}
+
+.single-product .related.products a.added_to_cart:hover {
+    color: #D96B43;
+}
+
+
+/* Catálogo: cuadrícula de productos */
+body.post-type-archive-product ul.products,
+body.tax-product_cat ul.products {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px 30px;
+}
+
+/* Evitar que los elementos de limpieza ocupen una columna */
+body.post-type-archive-product ul.products::before,
+body.post-type-archive-product ul.products::after,
+body.tax-product_cat ul.products::before,
+body.tax-product_cat ul.products::after {
+    display: none;
+}
+
+body.post-type-archive-product ul.products li.product,
+body.tax-product_cat ul.products li.product {
+    float: none;
+    width: 100%;
+    margin: 0;
+    min-width: 0;
+}
+
+@media (max-width: 1024px) {
+    body.post-type-archive-product ul.products,
+    body.tax-product_cat ul.products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    body.post-type-archive-product ul.products,
+    body.tax-product_cat ul.products {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Fichas de producto: cantidad compacta */
+.single-product div.product form.cart .quantity {
+    width: 50px !important;
+    flex: 0 0 50px !important;
+}
+
+.single-product div.product form.cart .quantity input.qty {
+    width: 50px !important;
+    min-width: 0 !important;
+    height: 40px !important;
+    min-height: 0 !important;
+    padding: 4px !important;
+    font-size: 14px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+
+/* Carrito de la cabecera */
+#site-header .hc-menu-carrito > a.hc-carrito {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    color: #0F4C5C;
+    text-decoration: none;
+}
+
+#site-header .hc-carrito svg {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+#site-header .hc-carrito-contador {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 4px;
+    border-radius: 50px;
+    background: #D96B43;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    box-sizing: border-box;
+}
+
+#site-header .hc-menu-carrito > a.hc-carrito:hover {
+    color: #D96B43;
+}
+
+#site-header .hc-menu-carrito > a.hc-carrito:focus-visible {
+    outline: 2px solid #0F4C5C;
+    outline-offset: 3px;
+}
+
+/* Quitar las decoraciones del menú solo en el carrito */
+#site-header .hc-menu-carrito > a::before,
+#site-header .hc-menu-carrito > a::after {
+    display: none;
+}
+
+

@@ -2739,3 +2739,116 @@ add_action(
     'hc_accesorios_sidebar_fin',
     40
 );
+
+
+/* Horizonte Camper: condiciones de envío en las fichas */
+add_action(
+    'woocommerce_single_product_summary',
+    'hc_mostrar_condiciones_envio',
+    35
+);
+
+function hc_mostrar_condiciones_envio() {
+    global $product;
+
+    if ( ! $product instanceof WC_Product || ! $product->needs_shipping() ) {
+        return;
+    }
+    ?>
+    <div class="hc-condiciones-envio">
+        <p><strong>Envío gratuito desde 30 € de compra.</strong></p>
+        <p>Pedidos inferiores a 30 €: Península - 6,20 €;
+            Baleares y Canarias - 19,60 €.</p>
+        <p><strong>Entrega:</strong> de 1 a 7 días hábiles.</p>
+        <p>No realizamos envíos a Ceuta ni Melilla.</p>
+    </div>
+    <?php
+}
+
+
+
+/* Horizonte Camper: carrito con contador en el menú principal */
+function hc_enlace_carrito() {
+    if ( ! function_exists( 'WC' ) || ! WC()->cart ) {
+        return '';
+    }
+
+    $cantidad = WC()->cart->get_cart_contents_count();
+    $etiqueta = sprintf(
+        'Ver carrito: %d artículos',
+        $cantidad
+    );
+
+    ob_start();
+    ?>
+    <a class="hc-carrito"
+       href="<?php echo esc_url( wc_get_cart_url() ); ?>"
+       aria-label="<?php echo esc_attr( $etiqueta ); ?>">
+        <svg width="26" height="26" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round"
+             aria-hidden="true" focusable="false">
+            <path d="M3 3h2l3 12h10l3-9H6"/>
+            <circle cx="9" cy="20" r="1"/>
+            <circle cx="18" cy="20" r="1"/>
+        </svg>
+        <span class="hc-carrito-contador">
+            <?php echo esc_html( $cantidad ); ?>
+        </span>
+    </a>
+    <?php
+    return ob_get_clean();
+}
+
+/* Añadirlo al menú que hemos identificado en tu cabecera */
+add_filter(
+    'wp_nav_menu_menu-principal_items',
+    function ( $items ) {
+        $enlace = hc_enlace_carrito();
+
+        if ( $enlace ) {
+            $items .= '<li class="menu-item hc-menu-carrito">'
+                . $enlace . '</li>';
+        }
+
+        return $items;
+    }
+);
+
+/* Actualizar ambos contadores: escritorio y móvil */
+add_filter(
+    'woocommerce_add_to_cart_fragments',
+    function ( $fragmentos ) {
+        $enlace = hc_enlace_carrito();
+
+        if ( $enlace ) {
+            $fragmentos['a.hc-carrito'] = $enlace;
+        }
+
+        return $fragmentos;
+    }
+);
+
+/* Cargar la actualización del carrito en todas las páginas */
+add_action(
+    'wp_enqueue_scripts',
+    function () {
+        if ( ! function_exists( 'WC' ) ) {
+            return;
+        }
+
+        wp_enqueue_script( 'wc-cart-fragments' );
+
+        /* Actualizar también tras acciones de los bloques de WooCommerce */
+        wp_add_inline_script(
+            'wc-cart-fragments',
+            "['wc-blocks_added_to_cart', 'wc-blocks_removed_from_cart']
+            .forEach(function(evento) {
+                document.addEventListener(evento, function() {
+                    jQuery(document.body).trigger('wc_fragment_refresh');
+                });
+            });"
+        );
+    },
+    20
+);
