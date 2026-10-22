@@ -2852,3 +2852,35 @@ add_action(
     },
     20
 );
+
+
+
+/**
+ * Galerías de Últimos trabajos.
+ */
+require_once get_stylesheet_directory() . '/inc/galerias-trabajos.php';
+
+function hc_cargar_recursos_galerias() {
+	if ( ! is_page( 'ultimos-trabajos' ) ) {
+		return;
+	}
+
+	$directorio = get_stylesheet_directory();
+	$url        = get_stylesheet_directory_uri();
+
+	wp_enqueue_style(
+		'hc-galerias-trabajos',
+		$url . '/assets/css/galerias-trabajos.css',
+		array(),
+		filemtime( $directorio . '/assets/css/galerias-trabajos.css' )
+	);
+
+	wp_enqueue_script(
+		'hc-galerias-trabajos',
+		$url . '/assets/js/galerias-trabajos.js',
+		array(),
+		filemtime( $directorio . '/assets/js/galerias-trabajos.js' ),
+		true
+	);
+}
+add_action( 'wp_enqueue_scripts', 'hc_cargar_recursos_galerias' );
