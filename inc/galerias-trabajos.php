@@ -290,9 +290,7 @@ function hc_galeria_ducato_shortcode() {
 			<?php endforeach; ?>
 		</div>
 
-		<p class="hc-proyecto__nota">
-			Proyecto conceptual de camperización. Imágenes generadas con IA.
-		</p>
+		
 
 		<dialog class="hc-visor" data-hc-viewer
 			aria-label="Galería de la Fiat Ducato Sportsvan">

@@ -6397,3 +6397,102 @@ body.tax-product_cat ul.products li.product {
 }
 
 
+/* Accesorios Camper · Banner a todo el ancho */
+.hc-tienda-banner {
+    position: relative;
+    left: 50%;
+    width: 100vw;
+    max-width: none;
+    margin: 24px 0 32px;
+    transform: translateX(-50%);
+    overflow: hidden;
+    border-radius: 0;
+}
+
+.hc-tienda-banner img {
+    display: block;
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+    object-position: center 65%;
+}
+
+@media (max-width: 767px) {
+    .hc-tienda-banner {
+        margin: 20px 0 24px;
+    }
+
+    .hc-tienda-banner img {
+        height: 400px;
+        object-position: 60% center;
+    }
+}
+
+
+/* Accesorios Camper · Presentación del catálogo */
+body.woocommerce-shop .woocommerce-products-header {
+    padding: 20px 0 10px;
+}
+
+body.woocommerce-shop .woocommerce-products-header__title {
+    margin: 0 0 22px;
+    max-width: 650px;
+
+    color: #355C6D !important;
+
+    font-family: var(--font-primary);
+    font-size: clamp(32px, 3vw, 46px);
+    font-weight: 500;
+    line-height: 1.15;
+}
+
+/* Antetítulo decorativo */
+body.woocommerce-shop .woocommerce-products-header__title::before {
+    content: "EQUIPA TU FURGO";
+    display: block;
+    margin-bottom: 20px;
+
+    color: var(--color-secundario);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+}
+
+body.woocommerce-shop .woocommerce-products-header .page-description {
+    max-width: 680px;
+}
+
+body.woocommerce-shop .woocommerce-products-header .page-description p {
+    margin: 0 0 16px;
+
+    color: #355C6D;
+    font-family: var(--font-primary);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+@media (max-width: 767px) {
+    body.woocommerce-shop .woocommerce-products-header {
+        padding-top: 10px;
+    }
+
+    body.woocommerce-shop .woocommerce-products-header__title::before {
+        margin-bottom: 14px;
+        font-size: 12px;
+    }
+
+    body.woocommerce-shop .woocommerce-products-header .page-description p {
+        font-size: 15px;
+        line-height: 1.65;
+    }
+}
+
+
+/* Encabezados agrupados: espacio controlado por Elementor */
+body.single-post .hc-single-post__contenido
+.hc-titulo-sin-margen .elementor-heading-title {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+

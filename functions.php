@@ -373,9 +373,16 @@ if (
 
         <div class="hc-form-privacidad">
 
+        <p class="hc-form-demo">
+    <strong>Formulario de demostración.</strong>
+    Utiliza datos ficticios. Durante las pruebas locales,
+    los mensajes se capturan en Mailpit y no se envían
+    al correo de contacto.
+</p>
+
             <p>
                 Mediante el envío de mis datos personales confirmo que he leído y acepto la
-                <a href="<?php echo esc_url( home_url( '/politica-de-privacidad/' ) ); ?>">
+                <a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">
                     política de privacidad
                 </a>.
             </p>
@@ -1251,8 +1258,14 @@ function hc_formulario_reserva_shortcode() {
             >
 
 
-            <label class="hc-form-privacidad">
+                <p class="hc-form-demo">
+                <strong>Reserva de demostración.</strong>
+                Utiliza datos ficticios y tarjetas de prueba.
+                No se realizan cobros reales ni se reserva
+                ningún vehículo.
+            </p>
 
+            <label class="hc-form-privacidad">
                 <input
                     type="checkbox"
                     name="privacidad"
@@ -1261,11 +1274,15 @@ function hc_formulario_reserva_shortcode() {
                 >
 
                 <span>
-                    He leído y acepto la política de privacidad.
+                    He leído y acepto la
+                    <a
+                        href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style="text-decoration: underline;"
+                    >política de privacidad</a>.
                 </span>
-
             </label>
-
 
             <button
                 type="submit"
@@ -1284,12 +1301,10 @@ function hc_formulario_reserva_shortcode() {
 
 }
 
-
 add_shortcode(
     'hc_formulario_reserva',
     'hc_formulario_reserva_shortcode'
 );
-
 /* =========================================================
    HORIZONTE CAMPER · PROCESAR RESERVA
    ========================================================= */
@@ -2884,3 +2899,193 @@ function hc_cargar_recursos_galerias() {
 	);
 }
 add_action( 'wp_enqueue_scripts', 'hc_cargar_recursos_galerias' );
+
+
+/**
+ * Simulador eléctrico.
+ */
+require_once get_stylesheet_directory() . '/inc/simulador-electrico.php';
+
+function hc_cargar_recursos_simulador() {
+	if ( ! is_page( 'simulador-electrico' ) ) {
+		return;
+	}
+
+	$directorio = get_stylesheet_directory();
+	$url        = get_stylesheet_directory_uri();
+
+	wp_enqueue_style(
+		'hc-simulador-electrico',
+		$url . '/assets/css/simulador-electrico.css',
+		array(),
+		filemtime( $directorio . '/assets/css/simulador-electrico.css' )
+	);
+
+	wp_enqueue_script(
+		'hc-simulador-electrico',
+		$url . '/assets/js/simulador-electrico.js',
+		array(),
+		filemtime( $directorio . '/assets/js/simulador-electrico.js' ),
+		true
+	);
+}
+add_action( 'wp_enqueue_scripts', 'hc_cargar_recursos_simulador' );
+
+
+/**
+ * Imagen de cabecera de Accesorios Camper.
+ */
+function hc_imagen_cabecera_tienda() {
+	if ( ! is_shop() || is_search() || is_paged() ) {
+		return;
+	}
+
+	$imagen = content_url( '/uploads/2026/10/accesorios_camper.webp' );
+	?>
+	<div class="hc-tienda-banner">
+		<img
+			src="<?php echo esc_url( $imagen ); ?>"
+			alt="Accesorios camper con vajilla, utensilios de cocina y silla de camping junto a una furgoneta frente al mar."
+			decoding="async"
+		>
+	</div>
+	<?php
+}
+
+add_action(
+	'woocommerce_shop_loop_header',
+	'hc_imagen_cabecera_tienda',
+	5
+);
+
+
+/* Quitar las migas de pan de la página general de la tienda */
+function hc_ocultar_migas_tienda() {
+	if ( function_exists( 'is_shop' ) && is_shop() ) {
+		remove_action(
+			'woocommerce_before_main_content',
+			'woocommerce_breadcrumb',
+			20
+		);
+	}
+}
+
+add_action( 'wp', 'hc_ocultar_migas_tienda' );
+
+
+/**
+ * Autoría de marca para entradas firmadas como Horizonte Camper.
+ */
+function hc_schema_autor_organizacion( $data, $jsonld ) {
+	if ( ! is_singular( 'post' ) ) {
+		return $data;
+	}
+
+	$autor_id = get_post_field(
+		'post_author',
+		get_queried_object_id()
+	);
+
+	$nombre_autor = get_the_author_meta(
+		'display_name',
+		$autor_id
+	);
+
+	// Conserva la autoría personal de otros colaboradores.
+	if ( 'Horizonte Camper' !== trim( $nombre_autor ) ) {
+		return $data;
+	}
+
+	$organizacion_id = '';
+
+	// Localiza la organización existente.
+	foreach ( $data as $nodo ) {
+		if ( ! is_array( $nodo ) ) {
+			continue;
+		}
+
+		$tipos = (array) ( $nodo['@type'] ?? array() );
+
+		if (
+			in_array( 'Organization', $tipos, true ) &&
+			'Horizonte Camper' === ( $nodo['name'] ?? '' ) &&
+			! empty( $nodo['@id'] )
+		) {
+			$organizacion_id = $nodo['@id'];
+			break;
+		}
+	}
+
+	if ( ! $organizacion_id ) {
+		return $data;
+	}
+
+	// Enlaza la autoría del artículo con esa organización.
+	foreach ( $data as &$nodo ) {
+		if ( ! is_array( $nodo ) ) {
+			continue;
+		}
+
+		$tipos = (array) ( $nodo['@type'] ?? array() );
+
+		if (
+			array_intersect(
+				array( 'Article', 'BlogPosting', 'NewsArticle' ),
+				$tipos
+			)
+		) {
+			$nodo['author'] = array(
+				'@id' => $organizacion_id,
+			);
+		}
+	}
+	unset( $nodo );
+
+	return $data;
+}
+
+add_filter(
+	'rank_math/json_ld',
+	'hc_schema_autor_organizacion',
+	100,
+	2
+);
+
+
+/**
+ * Aviso de tienda de demostración en Finalizar compra.
+ */
+function hc_aviso_checkout_demostracion( $contenido ) {
+    if (
+        is_admin() ||
+        ! function_exists( 'is_checkout' ) ||
+        ! is_checkout() ||
+        is_wc_endpoint_url() ||
+        ! is_main_query() ||
+        ! in_the_loop()
+    ) {
+        return $contenido;
+    }
+
+    $aviso = '
+    <div class="hc-aviso-tienda-demo"
+         style="margin:0 0 28px;padding:20px;
+                border-left:4px solid #D96B43;
+                border-radius:8px;background:#F8F5EF;
+                color:#0F4C5C;line-height:1.7;">
+        <p style="margin:0;">
+            <strong>Tienda de demostración:</strong>
+            los pedidos y pagos son de prueba.
+            No se realizan cobros ni envíos reales.
+            Utiliza datos ficticios y tarjetas de prueba.
+        </p>
+    </div>';
+
+    return $aviso . $contenido;
+}
+
+add_filter(
+    'the_content',
+    'hc_aviso_checkout_demostracion',
+    20
+);
