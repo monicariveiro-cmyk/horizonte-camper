@@ -6496,3 +6496,213 @@ body.single-post .hc-single-post__contenido
 }
 
 
+
+/* Formulario de Contacto */
+.hc-contacto-form {
+    display: grid;
+    gap: 22px;
+}
+
+.hc-contacto-form__campo {
+    display: grid;
+    gap: 9px;
+}
+
+.hc-contacto-form__campo label {
+    color: #0F4C5C;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.hc-contacto-form__campo input,
+.hc-contacto-form__campo select,
+.hc-contacto-form__campo textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: 13px 15px;
+    border: 1px solid #cbd5d7;
+    border-radius: 8px;
+    background: #fff;
+    color: #0F4C5C;
+    font: inherit;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.hc-contacto-form__campo textarea {
+    min-height: 170px;
+    resize: vertical;
+}
+
+.hc-contacto-form__campo input:focus,
+.hc-contacto-form__campo select:focus,
+.hc-contacto-form__campo textarea:focus {
+    border-color: #0F4C5C;
+    outline: 2px solid #0F4C5C;
+    outline-offset: 2px;
+}
+
+.hc-contacto-form .hc-contacto-form__aviso {
+    margin: 0;
+    padding: 15px 18px;
+    border-left: 3px solid #D96B43;
+    border-radius: 6px;
+    background: #F8F5EF;
+    color: #355C6D;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.hc-contacto-form__privacidad {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.hc-contacto-form__privacidad input[type="checkbox"] {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    margin: 3px 0 0;
+    accent-color: #0F4C5C;
+}
+
+.hc-contacto-form__privacidad label {
+    color: #355C6D;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.hc-contacto-form__privacidad a {
+    color: #0F4C5C;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.hc-contacto-form .hc-contacto-form__enviar {
+    width: 100%;
+    padding: 16px 22px;
+    border: 1px solid #D96B43;
+    border-radius: 8px;
+    background: #D96B43;
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.hc-contacto-form .hc-contacto-form__enviar:hover {
+    border-color: #0F4C5C;
+    background: #0F4C5C;
+}
+
+.hc-contacto-form__enviar:focus-visible,
+.hc-contacto-form__privacidad input:focus-visible {
+    outline: 2px solid #0F4C5C;
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hc-contacto-form .hc-contacto-form__enviar {
+        transition: none;
+    }
+}
+
+
+/* Confirmación de envío del formulario */
+.hc-contacto-confirmacion {
+    box-sizing: border-box;
+    width: min(460px, calc(100% - 32px));
+    max-height: calc(100dvh - 48px);
+    margin: auto;
+    padding: 0;
+    overflow: auto;
+    border: 0;
+    border-radius: 20px;
+    background: #F8F5EF;
+    color: #0F4C5C;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+    font-family: "Poppins", sans-serif;
+}
+
+.hc-contacto-confirmacion::backdrop {
+    background: rgba(7, 35, 43, 0.65);
+}
+
+.hc-contacto-confirmacion__contenido {
+    padding: 36px 28px;
+    text-align: center;
+}
+
+.hc-contacto-confirmacion__icono {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 22px;
+    border-radius: 50%;
+    background: #0F4C5C;
+    color: #fff;
+    font-size: 32px;
+}
+
+.hc-contacto-confirmacion h2 {
+    margin: 0 0 16px;
+    color: #0F4C5C;
+    font-size: clamp(25px, 5vw, 32px);
+    line-height: 1.2;
+}
+
+.hc-contacto-confirmacion p {
+    margin: 0 0 26px;
+    color: #355C6D;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.hc-contacto-confirmacion button {
+    padding: 12px 30px;
+    border: 0;
+    border-radius: 8px;
+    background: #0F4C5C;
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+}
+
+.hc-contacto-confirmacion button:hover {
+    background: #355C6D;
+}
+
+.hc-contacto-confirmacion button:focus-visible {
+    outline: 3px solid #D96B43;
+    outline-offset: 4px;
+}
+
+
+/* Blog: permitir que el contenido se ajuste en móvil */
+@media (max-width: 767px) {
+
+    body.single-post .hc-single-post__layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    body.single-post .hc-single-post__contenido,
+    body.single-post .hc-single-post__contenido .elementor,
+    body.single-post .hc-single-post__contenido .e-con,
+    body.single-post .hc-single-post__contenido .e-con-inner,
+    body.single-post .hc-single-post__contenido .elementor-widget,
+    body.single-post .hc-single-post__contenido .elementor-widget-container {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    body.single-post .hc-single-post__contenido .elementor-widget-image img {
+        max-width: 100%;
+        height: auto;
+    }
+}

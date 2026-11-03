@@ -3089,3 +3089,34 @@ add_filter(
     'hc_aviso_checkout_demostracion',
     20
 );
+
+
+require_once get_stylesheet_directory() . '/inc/formulario-contacto.php';
+
+/**
+ * Insertar el formulario en el bloque HTML de Contacto.
+ */
+function hc_insertar_formulario_contacto( $contenido, $widget ) {
+    if ( 'html' !== $widget->get_name() ) {
+        return $contenido;
+    }
+
+    $hueco = '<div id="hc-contacto-formulario"></div>';
+
+    if ( false === strpos( $contenido, $hueco ) ) {
+        return $contenido;
+    }
+
+    return str_replace(
+        $hueco,
+        do_shortcode( '[hc_contacto]' ),
+        $contenido
+    );
+}
+
+add_filter(
+    'elementor/widget/render_content',
+    'hc_insertar_formulario_contacto',
+    10,
+    2
+);
