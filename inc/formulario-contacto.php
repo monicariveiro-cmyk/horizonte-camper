@@ -160,8 +160,7 @@ function hc_contacto_ventana_confirmacion() {
             </h2>
 
             <p id="hc-contacto-confirmacion-texto">
-                Tu mensaje de prueba se ha procesado correctamente.
-                En el entorno local puedes revisarlo en Mailpit.
+                Hemos recibido tu mensaje correctamente. Gracias por contactar con Horizonte Camper.
             </p>
 
             <form method="dialog">

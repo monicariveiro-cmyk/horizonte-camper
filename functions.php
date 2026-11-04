@@ -1783,7 +1783,7 @@ function hc_crear_sesion_stripe() {
     // =====================================================
 
     $pagina_alquiler = get_permalink(
-    get_page_by_path('alquiler')
+    get_page_by_path('alquiler-de-campers-en-asturias')
 );
 
 if (! $pagina_alquiler) {
